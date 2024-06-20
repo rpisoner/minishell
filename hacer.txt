@@ -1,4 +1,4 @@
-Cosas que hacer:
+Cosas que hacer(Subject):
 
 Ver como gestinamos el input y donde guardamos las cosas(prohibido split por espacios)
 Ejecutar los comandos (creo que es fácil porque esto tiene pinta de printear lo que haga el comando)(creo que esto lo se hacer)
@@ -10,3 +10,9 @@ Implementar las pipes (|)
 Las variables de entorno
 Gestionar echo $? (Esto son los estados de salida, es mirar bien con que salimos en exit)
 Gestionar las comillas, contrabarra, punto y coma, comillas altas y el signo del dolar
+El historial (Esto ya se como hacerlo, es facil hacerlo con el readline)
+Ejecutar los comandos en el PATH (esto supongo que será como en el pipex)
+
+
+Ideas:
+Lo que pille el readline almacenarlo en la estructura del input para usarlo en el pipex y en la parte de la ejecución

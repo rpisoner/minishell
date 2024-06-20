@@ -1,27 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr_pf.c                                     :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 09:34:00 by jolivare          #+#    #+#             */
-/*   Updated: 2023/11/14 09:10:04 by jolivare         ###   ########.fr       */
+/*   Created: 2024/06/19 12:34:37 by jolivare          #+#    #+#             */
+/*   Updated: 2024/06/19 12:34:38 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void	ft_putptr_pf(void *str, size_t *cont)
-{
-	unsigned long	ptr;
-
-	ptr = (unsigned long)str;
-	if (!ptr)
-	{
-		ft_putstr_pf("0x0", cont);
-		return ;
-	}
-	ft_putstr_pf("0x", cont);
-	ft_puthexlow_pf(ptr, cont);
-}
+#include "../../inc/minishell.h"
