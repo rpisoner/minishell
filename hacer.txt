@@ -13,6 +13,5 @@ Gestionar las comillas, contrabarra, punto y coma, comillas altas y el signo del
 El historial (Esto ya se como hacerlo, es facil hacerlo con el readline)
 Ejecutar los comandos en el PATH (esto supongo que será como en el pipex)
 
-
 Ideas:
 Lo que pille el readline almacenarlo en la estructura del input para usarlo en el pipex y en la parte de la ejecución
