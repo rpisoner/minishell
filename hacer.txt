@@ -14,5 +14,13 @@ El historial (Esto ya se como hacerlo, es facil hacerlo con el readline)
 Ejecutar los comandos en el PATH (esto supongo que será como en el pipex)
 Hay que actualizar envp cuando se añada una nueva variable de entorno
 
+(Implementación)
+Al contar los comandos no contar el numero de flags
+Cuando ejecutemos el comando hay que borrar el input tokenizado para poder almacenar el siguiente
+
+
 Ideas:
-Lo que pille el readline almacenarlo en la estructura del input para usarlo en el pipex y en la parte de la ejecución
+-Tokenización:
+	-Flags:
+		Si hay un menos delante si o si es flag del comando de antes(guardamos con un int que es comando con flag y le hacemos un join)
+	Como lo vamos a tokenizar es pillar la posición anterior del array y hacer un join supongo

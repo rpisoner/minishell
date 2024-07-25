@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 11:12:51 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:58:09 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 typedef struct s_input
 {
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
-	char	**input;
+	char	*input;
 	char	*path;
 	char	*flags;
 	
@@ -51,7 +51,7 @@ typedef struct s_input
 /** Estructura para la ejecución*/
 // Se va a parecer mucho a la del pipex esta
 // Yo la haría la principal(donde linkamos las demás)
-typedef struct s_exec
+typedef struct s_mini
 {
 	char	**envp;
 	int		*old_pipe[2];
@@ -62,11 +62,15 @@ typedef struct s_exec
 	// pid_t *childs;
 	int		status;
 	int		quoted;
-}	t_exec;
+}	t_mini;
 
 /** Como mucho haría una más para las señales*/
 
-void	get_env(t_exec *exec);
+void	get_env(t_mini *mini);
+
+void	divide_commands(char *input);
+
+int		ft_isspace(char c);
 
 
 #endif

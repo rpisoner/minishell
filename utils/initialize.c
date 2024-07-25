@@ -1,14 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_manager.c                                    :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 12:04:26 by jolivare         ###   ########.fr       */
+/*   Created: 2024/07/25 12:38:58 by jolivare          #+#    #+#             */
+/*   Updated: 2024/07/25 12:39:44 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../inc/minishell.h"
 
+void	initialize_data(int argc, char **argv, char **envp)
+{
+	
+}

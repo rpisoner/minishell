@@ -6,13 +6,13 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/07/25 11:13:48 by jolivare         ###   ########.fr        #
+#    Updated: 2024/07/25 15:58:25 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SOURCES = src/main.c src/built-ins/getenv.c
+SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c src/parser/tokenizer.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
