@@ -12,6 +12,7 @@ Gestionar echo $? (Esto son los estados de salida, es mirar bien con que salimos
 Gestionar las comillas, contrabarra, punto y coma, comillas altas y el signo del dolar
 El historial (Esto ya se como hacerlo, es facil hacerlo con el readline)
 Ejecutar los comandos en el PATH (esto supongo que será como en el pipex)
+Hay que actualizar envp cuando se añada una nueva variable de entorno
 
 Ideas:
 Lo que pille el readline almacenarlo en la estructura del input para usarlo en el pipex y en la parte de la ejecución

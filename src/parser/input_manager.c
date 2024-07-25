@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/24 16:14:03 by jolivare         ###   ########.fr       */
+/*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
+/*   Updated: 2024/06/24 10:59:03 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-/**Si hay más de un comando hacemos como en el pipex, si no hardcodeada histórica*/
-
-void	one_cmd(t_exec *exec)
+void	manage_input(char *command)
 {
-	pid_t	pid;
-	int		status;
+	t_input *str;
 
-	pid = fork();
-	if (pid < 0)
-		pid_error();
-	if (pid == 0)
-		// función que ejecute el único comando
-	waitpid(pid, &status, 0);
-	exec->status = WEXITSTATUS(status);	
+	str->input = command;
+	
 }

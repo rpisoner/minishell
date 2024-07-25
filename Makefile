@@ -6,13 +6,13 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/06/20 14:54:58 by jolivare         ###   ########.fr        #
+#    Updated: 2024/07/25 11:13:48 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SOURCES = src/main.c
+SOURCES = src/main.c src/built-ins/getenv.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
