@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 16:52:34 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:41:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	main(int argc, char **argv, char **envp)
 	t_mini	mini;
 
 	mini.envp = envp;
-	int		i;
+	//int		i;
 
-	i = 0;
-	argv = NULL;
+	//i = 0;
+	(void)argv ;
 	if (argc == 1)
 	{
 		while (1)
