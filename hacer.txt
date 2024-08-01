@@ -24,3 +24,6 @@ Ideas:
 	-Flags:
 		Si hay un menos delante si o si es flag del comando de antes(guardamos con un int que es comando con flag y le hacemos un join)
 	Como lo vamos a tokenizar es pillar la posición anterior del array y hacer un join supongo
+
+En vez de la lista usar substr y así gestionar ya las comidas
+

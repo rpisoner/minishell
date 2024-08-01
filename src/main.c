@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 20:41:10 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:54:04 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,23 @@ int	main(int argc, char **argv, char **envp)
 {
 	char	*input;
 	t_mini	mini;
+	int		i;
 
-	mini.envp = envp;
-	//int		i;
-
-	//i = 0;
+	i = 0;
 	(void)argv ;
+	initialize_envp(envp, &mini);
 	if (argc == 1)
 	{
 		while (1)
 		{
 			input = readline("minishell>");
+			// while (input[i] != '\"')
+			// 	i++;
+			// if (input[i] == '\"')
+			// {
+			// 	i++;
+			// 	ft_substr(input, i, )
+			// }
 			divide_commands(input);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
@@ -36,7 +42,8 @@ int	main(int argc, char **argv, char **envp)
 			{
 				free(input);
 				break ; 
-			} 
+			}
+			free (input);
 		}
 		clear_history();
 		return (0);

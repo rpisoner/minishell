@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:45:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/04/04 11:40:11 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:47:16 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	*(str + i) = '\0';
 	return (str);
 }
-/*int main ()
+int main ()
 {
     char const *s = "mondongo";
     unsigned int start = 3;
     size_t len = 3;
     printf("%s\n", ft_substr(s, start, len));
-}*/
+}

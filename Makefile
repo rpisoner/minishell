@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/07/29 17:45:03 by jolivare         ###   ########.fr        #
+#    Updated: 2024/07/30 15:05:05 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c src/parser/tokenizer.c
+SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c src/parser/tokenizer.c \
+		src/initialize.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

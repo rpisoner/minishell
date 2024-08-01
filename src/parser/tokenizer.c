@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/29 16:38:34 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:54:47 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void	divide_commands(char *input)
 	char	*word;
 	int		i;
 	int		j;
-	int		len;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	while(input[i] != '\0')
+	while(input[++i] != '\0')
 	{
 		if (is_delimiter(input[i]))
 		{
@@ -41,8 +40,7 @@ void	divide_commands(char *input)
 		{
 			if (j == 0)
 			{
-				len = ft_strlen(input + i);
-				word = (char *)malloc(sizeof(char) * (len + 1));
+				word = (char *)malloc(sizeof(char) * (ft_strlen(input + i) + 1));
 				if (!word)
 				{
 					printf("Error en malloc\n");
@@ -51,7 +49,6 @@ void	divide_commands(char *input)
 			}
 			word[j++] = input[i];
 		}
-		i++;
 	}
 	if (j > 0)
 	{
@@ -59,3 +56,4 @@ void	divide_commands(char *input)
 		printf("Word found: %s\n", word);
 	}
 }
+

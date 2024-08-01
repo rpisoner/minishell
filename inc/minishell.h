@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 15:58:09 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:53:04 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@
 typedef struct s_input
 {
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
-	char	*input;
-	char	*path;
-	char	*flags;
+	struct	s_input	*next;
+	char			*cmds;
+	char			*path;
+	char			*flags;
 	
 	// Hacemos flag de si hay here_doc?
-	int		here_doc;
-	int		infile;
-	int		outfile;
+	int				here_doc;
+	int				infile;
+	int				outfile;
 
 	// Char **infiles y char **outfiles??
-	char	**infiles;
-	char	**outfiles;
+	char			**infiles;
+	char			**outfiles;
 	/** En este ya no se que más habría que poner*/
 }	t_input;
 
@@ -65,6 +66,8 @@ typedef struct s_mini
 }	t_mini;
 
 /** Como mucho haría una más para las señales*/
+
+void	initialize_envp(char **envp, t_mini *mini);
 
 void	get_env(t_mini *mini);
 
