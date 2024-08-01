@@ -1,0 +1,138 @@
+Funciones de GNU Readline
+Estas funciones proporcionan una interfaz de línea de comandos con características como la edición de línea y el historial de comandos.
+
+readline: Lee una línea de entrada del usuario, con soporte para la edición de línea.
+rl_clear_history: Limpia el historial de comandos.
+rl_on_new_line: Indica a la biblioteca que se ha comenzado una nueva línea.
+rl_replace_line: Reemplaza el contenido de la línea actual con una nueva línea.
+rl_redisplay: Redisplay (vuelve a mostrar) la línea actual.
+add_history: Añade la línea proporcionada al historial de comandos.
+
+#include <readline/readline.h>
+#include <readline/history.h>
+
+Funciones de Entrada/Salida Estándar y Manejo de Memoria
+Estas funciones son básicas para la entrada/salida de datos y la gestión dinámica de memoria.
+
+printf: Imprime una cadena formateada a la salida estándar.
+malloc: Asigna memoria dinámica.
+free: Libera memoria asignada dinámicamente.
+write: Escribe datos en un descriptor de archivo.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+Funciones de Manejo de Archivos
+Estas funciones se utilizan para operaciones de archivos como apertura, lectura, escritura y cierre.
+
+access: Comprueba la accesibilidad de un archivo.
+open: Abre un archivo.
+read: Lee datos de un descriptor de archivo.
+close: Cierra un descriptor de archivo.
+unlink: Elimina un archivo.
+
+#include <unistd.h>
+#include <fcntl.h>
+
+Funciones de Procesos
+Estas funciones manejan la creación y sincronización de procesos.
+
+fork: Crea un nuevo proceso duplicando el proceso actual.
+wait: Espera a que termine un proceso hijo.
+waitpid: Espera a que termine un proceso hijo específico.
+wait3, wait4: Esperan a que termine un proceso hijo y pueden devolver información adicional sobre el proceso terminado.
+execve: Ejecuta un programa.
+exit: Termina el proceso actual.
+
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+Funciones de Señales
+Estas funciones permiten el manejo de señales, que son una forma de comunicación entre procesos.
+
+signal: Establece un manejador para una señal específica.
+sigaction: Establece un manejador para una señal con más opciones que signal.
+kill: Envía una señal a un proceso o grupo de procesos.
+
+#include <signal.h>
+
+Funciones de Directorios y Rutas
+Estas funciones manejan operaciones relacionadas con directorios y rutas de archivos.
+
+getcwd: Obtiene el directorio de trabajo actual.
+chdir: Cambia el directorio de trabajo actual.
+opendir: Abre un directorio.
+readdir: Lee una entrada de un directorio.
+closedir: Cierra un directorio.
+
+#include <unistd.h>
+#include <dirent.h>
+
+Funciones de Información de Archivos
+Estas funciones obtienen información sobre archivos.
+
+stat: Obtiene información sobre un archivo.
+lstat: Igual que stat, pero para enlaces simbólicos.
+fstat: Obtiene información sobre un archivo a partir de su descriptor.
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+Funciones de Duplicación y Redirección de Descriptores de Archivos
+Estas funciones manejan la duplicación y redirección de descriptores de archivos.
+
+dup: Duplica un descriptor de archivo.
+dup2: Duplica un descriptor de archivo a un descriptor específico.
+
+#include <unistd.h>
+
+Funciones de Comunicación entre Procesos
+Estas funciones manejan la comunicación entre procesos a través de pipes.
+
+pipe: Crea un par de descriptores de archivo para comunicación inter-procesos.
+
+#include <unistd.h>
+
+Funciones de Terminal
+Estas funciones permiten la manipulación del terminal.
+
+isatty: Verifica si un descriptor de archivo se refiere a un terminal.
+ttyname: Devuelve el nombre de un terminal asociado con un descriptor de archivo.
+ttyslot: Obtiene el índice del terminal en el archivo /etc/ttys.
+ioctl: Control de dispositivos.
+tcsetattr, tcgetattr: Establecen y obtienen atributos del terminal.
+
+#include <unistd.h>
+#include <termios.h>
+#include <sys/ioctl.h>
+
+Funciones de Variables de Entorno
+Estas funciones manejan las variables de entorno.
+
+getenv: Obtiene el valor de una variable de entorno.
+
+#include <stdlib.h>
+
+Funciones de Manejo de Capacidad de Terminal
+Estas funciones proporcionan acceso a las capacidades del terminal definidas en termcap/terminfo.
+
+tgetent: Inicializa la biblioteca termcap.
+tgetflag: Obtiene el valor de una capacidad booleana.
+tgetnum: Obtiene el valor de una capacidad numérica.
+tgetstr: Obtiene el valor de una capacidad de cadena.
+tgoto: Construye una secuencia de cursor.
+tputs: Envía una secuencia de control al terminal.
+
+#include <term.h>
+
+Funciones de Manejo de Errores
+Estas funciones manejan la impresión y manejo de errores.
+
+strerror: Devuelve una cadena que describe el código de error pasado.
+perror: Imprime un mensaje de error al flujo de error estándar.
+
+#include <string.h>
+#include <errno.h>
