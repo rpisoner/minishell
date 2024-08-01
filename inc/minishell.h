@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/01 10:53:04 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:32:22 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 typedef struct s_input
 {
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
-	struct	s_input	*next;
 	char			*cmds;
 	char			*path;
 	char			*flags;
@@ -54,10 +53,8 @@ typedef struct s_input
 // Yo la haría la principal(donde linkamos las demás)
 typedef struct s_mini
 {
+	t_input	*input;
 	char	**envp;
-	int		*old_pipe[2];
-	int		*new_pipe[2];
-	t_input *input;
 	int		cmd_num;
 	// Array de childs?
 	// pid_t *childs;
@@ -67,13 +64,12 @@ typedef struct s_mini
 
 /** Como mucho haría una más para las señales*/
 
-void	initialize_envp(char **envp, t_mini *mini);
+void	initialize_data(t_mini *mini, char **envp);
 
 void	get_env(t_mini *mini);
 
 void	divide_commands(char *input);
 
 int		ft_isspace(char c);
-
 
 #endif

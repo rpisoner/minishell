@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getenv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:42 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 12:05:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:26:40 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	get_env(t_mini *mini)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	while (mini->envp[i])
 		printf("%s\n", mini->envp[i++]);
 }

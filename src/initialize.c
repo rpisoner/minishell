@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/30 15:56:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:23:28 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	initialize_envp(char **envp, t_mini *mini)
+void	initialize_data(t_mini *mini, char **envp)
 {
 	mini->envp = envp;
 }
-
-// void	initialize_data(char *input, t_mini *mini)
-// {
-	
-// }
