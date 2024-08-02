@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
+#    By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/07/30 15:05:05 by jolivare         ###   ########.fr        #
+#    Updated: 2024/08/02 12:33:11 by rpisoner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c src/parser/tokenizer.c \
+SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c src/parser/tokenizer.c src/exec.c src/path.c \
 		src/initialize.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
 LIBFT = inc/libft/libft.a
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 REMOVE = rm -f
 CC = cc
 

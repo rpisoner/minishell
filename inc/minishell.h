@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/01 12:32:22 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:48:17 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@
 typedef struct s_input
 {
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
+	char			*raw_info;
+	char			**words;
 	char			*cmds;
-	char			*path;
 	char			*flags;
-	
+	char			*path;
+
 	// Hacemos flag de si hay here_doc?
 	int				here_doc;
 	int				infile;
@@ -53,8 +55,9 @@ typedef struct s_input
 // Yo la haría la principal(donde linkamos las demás)
 typedef struct s_mini
 {
-	t_input	*input;
+	t_input	input;
 	char	**envp;
+	char	**path;
 	int		cmd_num;
 	// Array de childs?
 	// pid_t *childs;
@@ -68,8 +71,10 @@ void	initialize_data(t_mini *mini, char **envp);
 
 void	get_env(t_mini *mini);
 
-void	divide_commands(char *input);
+void	divide_commands(t_mini *mini);
 
 int		ft_isspace(char c);
+
+char	**search_path(char **envp);
 
 #endif

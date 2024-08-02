@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/29 17:46:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/02 11:48:05 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /**Si hay más de un comando hacemos como en el pipex, si no hardcodeada histórica*/
 
+/*
 void	one_cmd(t_mini *mini)
 {
 	pid_t	pid;
@@ -26,4 +27,19 @@ void	one_cmd(t_mini *mini)
 		// función que ejecute el único comando
 	waitpid(pid, &status, NULL);
 	mini->status = WEXITSTATUS(status);	
+}
+*/
+
+void	execute(t_mini *mini)
+{
+	pid_t	child;
+	char	*command;
+
+	command = "ls -la";
+	child = fork();
+	if (child == 0)
+	{
+		execve("/bin/ls", &command, mini->envp);
+		perror("");
+	}
 }

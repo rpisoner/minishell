@@ -26,3 +26,5 @@ Ideas:
 	Como lo vamos a tokenizar es pillar la posición anterior del array y hacer un join supongo
 
 En vez de la lista usar substr y así gestionar ya las comillas
+
+Si un argumento no tiene estrictamente un < entonces es realmente una flag y hay que gestionarlo como tal
