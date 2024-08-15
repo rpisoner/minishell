@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/02 14:31:49 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/15 16:30:00 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,32 @@ int	numspli(char const *s, char c)
 	return (cont);
 }
 
+static void	quote_check(t_mini *mini, int i)
+{
+	if (mini->input.raw_info[i] == '\''
+		|| mini->input.raw_info[i] == '\"')
+	{
+		if (mini->quoted == 0)
+		{
+			mini->quoted = 1;
+			mini->t_quote = mini->input.raw_info[i];
+		}
+		else if (mini->quoted == 1 && mini->t_quote
+			== mini->input.raw_info[i])
+			mini->quoted = 0;
+	}
+}
+
+void	store_word(t_mini *mini, char *word, int *j, int *k)
+{
+	if (word && *j > 0)
+	{
+		word[*j] = '\0';
+		mini->input.words[(*k)++] = word;
+		*j = 0;
+	}
+}
+
 void	divide_commands(t_mini *mini)
 {
 	char	*word;
@@ -61,22 +87,17 @@ void	divide_commands(t_mini *mini)
 	i = -1;
 	j = 0;
 	k = 0;
+	word = NULL;
 	printf ("num_splits: [%d]\n", (numspli(mini->input.raw_info, ' ')));
 	mini->input.words = (char **)malloc(sizeof(char *)
 			* (numspli(mini->input.raw_info, ' ') + 1));
 	while (mini->input.raw_info[++i] != '\0')
 	{
-		if (is_delimiter(mini->input.raw_info[i]))
-		{
-			if (j > 0)
-			{
-				word[j] = '\0';
-				mini->input.words[k++] = word;
-				j = 0;
-			}
-		}
+		if (is_delimiter(mini->input.raw_info[i]) && mini->quoted == 0)
+			store_word(mini, word, &j, &k);
 		else
 		{
+			quote_check(mini, i);
 			if (j == 0)
 			{
 				word = (char *)malloc(sizeof(char)
@@ -87,36 +108,12 @@ void	divide_commands(t_mini *mini)
 					exit (1);
 				}
 			}
-			word[j++] = mini->input.raw_info[i];
+			if (mini->t_quote != mini->input.raw_info[i])
+				word[j++] = mini->input.raw_info[i];
 		}
 	}
-	if (j > 0)
-	{
-		word[j] = '\0';
-		mini->input.words[k++] = word;
-	}
+	store_word(mini, word, &j, &k);
 	mini->input.words[k] = NULL;
+	unclosed_quote_check(mini);
 	print_stuff(mini->input.words);
 }
-
-/*
-void	assgin_data(t_mini *mini)
-{
-	char **str = mini->input->words;
-	int i = 0;
-	int j;
-	int k = 0;
-
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j] != '\0')
-		{
-			if (str[i][j] == '-')
-			{
-				mini->input->flags[k++] = str[i];
-			}
-
-		}
-	}
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/14 12:15:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/15 15:15:03 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_mini
 	// pid_t *childs;
 	int		status;
 	int		quoted;
+	char	t_quote;
 }	t_mini;
 
 /** Como mucho haría una más para las señales*/
@@ -77,5 +78,8 @@ void	divide_commands(t_mini *mini);
 int		ft_isspace(char c);
 
 char	**search_path(char **envp);
+
+//ERRRORS
+void	unclosed_quote_check(t_mini *mini);
 
 #endif

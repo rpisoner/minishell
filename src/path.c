@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 18:39:46 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/14 12:25:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:09:15 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-/*char	**search_path(char **envp)
+char	**search_path(char **envp)
 {
 	char	**path;
 	size_t	i;
@@ -27,7 +27,7 @@
 	}
 	return (path);
 }
-
+/*
 void	set_command_free(t_mini *mini, char *cmd, char *command_path, int j)
 {
 	mini->commands_paths[j] = ft_strdup(cmd);
