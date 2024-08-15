@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/15 16:30:00 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:50:45 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ static void	quote_check(t_mini *mini, int i)
 	if (mini->input.raw_info[i] == '\''
 		|| mini->input.raw_info[i] == '\"')
 	{
-		if (mini->quoted == 0)
+		if (mini->input.raw_info[i] == '\'')
+			mini->single_quote = 1;
+		else if (mini->input.raw_info[i] == '\"')
+			mini->double_quote = 1;
+		if (!mini->quoted == 0)
 		{
 			mini->quoted = 1;
 			mini->t_quote = mini->input.raw_info[i];
