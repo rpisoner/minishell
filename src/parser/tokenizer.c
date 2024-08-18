@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/15 18:50:45 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/18 14:34:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,14 @@ static void	quote_check(t_mini *mini, int i)
 	if (mini->input.raw_info[i] == '\''
 		|| mini->input.raw_info[i] == '\"')
 	{
-		if (mini->input.raw_info[i] == '\'')
-			mini->single_quote = 1;
-		else if (mini->input.raw_info[i] == '\"')
-			mini->double_quote = 1;
-		if (!mini->quoted == 0)
+		if (mini->quoted == 0)
 		{
 			mini->quoted = 1;
 			mini->t_quote = mini->input.raw_info[i];
 		}
-		else if (mini->quoted == 1 && mini->t_quote
-			== mini->input.raw_info[i])
-			mini->quoted = 0;
+		// else if (mini->quoted == 1 && mini->t_quote
+		// 	== mini->input.raw_info[i])
+		// 	mini->quoted = 0;
 	}
 }
 
@@ -118,6 +114,8 @@ void	divide_commands(t_mini *mini)
 	}
 	store_word(mini, word, &j, &k);
 	mini->input.words[k] = NULL;
-	unclosed_quote_check(mini);
+	//unclosed_quote_check(mini);
+	expander(mini);
 	print_stuff(mini->input.words);
+	mini->quoted = 0;
 }

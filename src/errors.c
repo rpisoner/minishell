@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/15 14:59:10 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/18 14:27:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void	unclosed_quote_check(t_mini *mini)
 	if (mini->quoted)
 	{
 		printf("Error: comillas sin cerrar\n");
-		exit(1);
+		return ;
 	}
+}
+
+void	malloc_error(void)
+{
+	printf("Error en alocación de memoria\n");
+	exit (1);
 }

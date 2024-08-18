@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/15 18:05:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/18 13:24:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,11 @@ typedef struct s_input
 	char			*cmds;
 	char			*flags;
 	char			*path;
-
-	// Hacemos flag de si hay here_doc?
 	int				here_doc;
 	int				infile;
 	int				outfile;
-
-	// Char **infiles y char **outfiles??
 	char			**infiles;
 	char			**outfiles;
-	/** En este ya no se que más habría que poner*/
 }	t_input;
 
 /** Estructura para la ejecución*/
@@ -60,16 +55,10 @@ typedef struct s_mini
 	char	**envp;
 	char	**path;
 	int		cmd_num;
-	// Array de childs?
-	// pid_t *childs;
 	int		status;
 	int		quoted;
-	int		double_quote;
-	int		single_quote;
 	char	t_quote;
 }	t_mini;
-
-/** Como mucho haría una más para las señales*/
 
 void	initialize_data(t_mini *mini, char **envp);
 
@@ -81,7 +70,12 @@ int		ft_isspace(char c);
 
 char	**search_path(char **envp);
 
+void	expand_var(t_mini *mini, char *var);
+char	*search_var(t_mini *mini, char *var);
+void	expander(t_mini *mini);
+
 //ERRRORS
 void	unclosed_quote_check(t_mini *mini);
+void	malloc_error(void);
 
 #endif
