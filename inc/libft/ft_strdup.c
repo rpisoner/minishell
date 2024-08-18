@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	int		i;
 	int		j;

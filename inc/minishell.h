@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/18 13:24:56 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/18 15:31:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ft_isspace(char c);
 
 char	**search_path(char **envp);
 
-void	expand_var(t_mini *mini, char *var);
+void	expand_var(t_mini *mini, char *var, int i);
 char	*search_var(t_mini *mini, char *var);
 void	expander(t_mini *mini);
 
