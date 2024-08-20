@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:45:47 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/01 10:47:16 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:29:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
@@ -37,10 +37,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	*(str + i) = '\0';
 	return (str);
 }
-int main ()
-{
-    char const *s = "mondongo";
-    unsigned int start = 3;
-    size_t len = 3;
-    printf("%s\n", ft_substr(s, start, len));
-}
+
+// int main ()
+// {
+//     char const *s = "mondongo";
+//     unsigned int start = 3;
+//     size_t len = 3;
+//     printf("%s\n", ft_substr(s, start, len));
+// }

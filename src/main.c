@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/18 12:18:43 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:35:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			divide_commands(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
-			{
 				get_env(&mini);
-			}
 			if (input && *input)
 				add_history(input);
 			if (input && ft_strcmp(input, "exit") == 0)

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/18 15:31:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:35:38 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@
 typedef struct s_input
 {
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
-	char			*raw_info;
-	char			**words;
-	char			*cmds;
-	char			*flags;
-	char			*path;
-	int				here_doc;
-	int				infile;
-	int				outfile;
-	char			**infiles;
-	char			**outfiles;
+	char	*raw_info;
+	char	**words;
+	char	*cmds;
+	char	*flags;
+	char	*path;
+	int		here_doc;
+	int		infile;
+	int		outfile;
+	char	**infiles;
+	char	**outfiles;
 }	t_input;
 
 /** Estructura para la ejecución*/
@@ -56,6 +56,7 @@ typedef struct s_mini
 	char	**path;
 	int		cmd_num;
 	int		status;
+	int		more_envs;
 	int		quoted;
 	char	t_quote;
 }	t_mini;
@@ -67,11 +68,14 @@ void	get_env(t_mini *mini);
 void	divide_commands(t_mini *mini);
 
 int		ft_isspace(char c);
+char	*ft_strjoin_char(char *s1, char c);
 
 char	**search_path(char **envp);
 
 void	expand_var(t_mini *mini, char *var, int i);
+char	*expand_single_var(t_mini *mini, char *var, int *j);
 char	*search_var(t_mini *mini, char *var);
+char	*generate_correct_var(char *var, int i);
 void	expander(t_mini *mini);
 
 //ERRRORS

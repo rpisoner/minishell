@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/18 14:15:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:39:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	close_parent(t_pipe *pipex)
 
 int	pipex(t_mini *mini)
 {
-	
+	int	i;
 
-	int i = 0;
+	i = 0;
 	while (mini->input->cmds[i])
 	{
 		if (ft_strcmp(mini->input->cmds[i], "<<") == 0)
