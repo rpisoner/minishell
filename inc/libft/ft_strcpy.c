@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_char.c                                  :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 15:18:40 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/21 12:48:19 by jolivare         ###   ########.fr       */
+/*   Created: 2024/08/21 12:45:02 by jolivare          #+#    #+#             */
+/*   Updated: 2024/08/21 12:46:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "libft.h"
 
-char	*ft_strjoin_char(char *s1, char c)
+char	*ft_strcpy(char *s1, char *s2)
 {
-	int		len;
-	char	*res;
+	int	i;
 
-	len = ft_strlen(s1);
-	res = (char *)malloc(sizeof(char) * (len + 2));
-	if (!res)
-		malloc_error();
-	ft_strcpy(res, s1);
-	res[len] = c;
-	res[len + 1] = '\0';
-	return (res);
+	i = 0;
+	while (s2[i] != '\0')
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+	s1[i] = '\0';
+	return (s1);
 }

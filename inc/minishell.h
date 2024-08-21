@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/20 15:35:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:18:46 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_mini
 	t_input	input;
 	char	**envp;
 	char	**path;
+	int		expansion;
 	int		cmd_num;
 	int		status;
 	int		more_envs;
@@ -69,6 +70,7 @@ void	divide_commands(t_mini *mini);
 
 int		ft_isspace(char c);
 char	*ft_strjoin_char(char *s1, char c);
+void	check_expansion(t_mini *mini, char *expanded, int i);
 
 char	**search_path(char **envp);
 
