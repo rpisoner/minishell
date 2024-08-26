@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 17:55:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/21 13:18:57 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:53:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,45 @@ void	expand_var(t_mini *mini, char *var, int i)
 	int 	j;
 	char	*expanded;
 	char	*temp;
+	int		start;
 	
 	j = 0;
 	expanded = ft_strdup("");
 	while (var[j])
 	{
+		start = j;
+		while (var[j] && var[j] != '$')
+				j++;
+		if (start != j)
+		{
+			if (mini->expanded == 0)
+				temp = ft_strjoin(expanded, ft_substr(var, start, j - start));
+			else
+				temp = ft_strjoin(expanded, ft_substr(var, start + 1, j - start));
+			free(expanded);
+			expanded = temp;
+		}
 		if (var[j] == '$')
 		{
-			mini->expansion = 1;
 			temp = ft_strjoin(expanded, expand_single_var(mini, var, &j));
-			free (expanded);
-			expanded = temp;	
+			if (temp)
+			{
+				mini->expansion = 1;
+				free(expanded);
+				expanded = temp;
+				mini->expanded = 1;
+			}
 		}
-		else if (!ft_isalnum(var[j]) && var[j] == '_')
-		{
-			temp = ft_strjoin_char(expanded, var[j]);
-			free (expanded);
-			expanded = temp;
-			j++;
-		}
-		else
-			j++;
 	}
-	check_expansion(mini, expanded, i);
+	if (mini->expansion)
+	{
+		free(mini->input.words[i]);
+		mini->input.words[i] = expanded;
+		mini->expansion = 0;
+		mini->expanded = 0;
+	}
+	else
+		free(expanded);
 }
 
 char	*search_var(t_mini *mini, char *var)
@@ -69,7 +85,6 @@ char	*search_var(t_mini *mini, char *var)
 
 	i = 0;
 	word = var + 1;
-	printf("Variable en search var: [%s]\n", var);
 	len = ft_strlen(word);
 	while (mini->envp[i])
 	{
@@ -100,14 +115,15 @@ char	*expand_single_var(t_mini *mini, char *var, int *j)
 	char	*res;
 
 	start = *j;
+	res = NULL;
 	while (var[*j + 1] && (ft_isalnum(var[*j + 1]) || var[*j + 1] == '_'))
 		(*j)++;
 	env_var = ft_substr(var, start, *j - start + 1);
 	value = search_var(mini, env_var);
 	if (value)
+	{
 		res = ft_strdup(value);
-	else
-		res = ft_strdup("");
+	}
 	free (env_var);
 	return (res);
 }

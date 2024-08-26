@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/21 13:18:46 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:32:47 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_mini
 	char	**envp;
 	char	**path;
 	int		expansion;
+	int		expanded;
 	int		cmd_num;
 	int		status;
 	int		more_envs;
@@ -78,6 +79,7 @@ void	expand_var(t_mini *mini, char *var, int i);
 char	*expand_single_var(t_mini *mini, char *var, int *j);
 char	*search_var(t_mini *mini, char *var);
 char	*generate_correct_var(char *var, int i);
+void	process_expansion(t_mini *mini, char *var, char *expanded, int *j);
 void	expander(t_mini *mini);
 
 //ERRRORS
