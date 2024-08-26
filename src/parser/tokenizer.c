@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/20 12:31:54 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:31:42 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void	print_stuff(char **stuff)
 	while (stuff[i])
 	{
 		printf("Words[%ld]: %s\n", i, stuff[i]);
-		free(stuff[i]);
 		i++;
 	}
 	printf("Words[%ld]: %s\n", i, stuff[i]);
-	free(stuff[i]);
 }
 
 int	is_delimiter(char c)
@@ -61,6 +59,8 @@ static void	quote_check(t_mini *mini, int i)
 			mini->quoted = 1;
 			mini->t_quote = mini->input.raw_info[i];
 		}
+//		else
+//			mini->quoted = 0;
 	}
 }
 

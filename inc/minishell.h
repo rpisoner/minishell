@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/26 14:32:47 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:20:53 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_input
 typedef struct s_mini
 {
 	t_input	input;
+	t_pipe	*pipex;
 	char	**envp;
 	char	**path;
 	int		expansion;
@@ -73,7 +74,12 @@ int		ft_isspace(char c);
 char	*ft_strjoin_char(char *s1, char c);
 void	check_expansion(t_mini *mini, char *expanded, int i);
 
+//PATH FUNCTIONS
 char	**search_path(char **envp);
+int		get_cmd_path(t_mini *mini);
+//EXECUTE FUNCTIONS
+void	execute_one_cmd(t_mini *mini);
+void	execute_commands(t_mini *mini);
 
 void	expand_var(t_mini *mini, char *var, int i);
 char	*expand_single_var(t_mini *mini, char *var, int *j);

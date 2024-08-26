@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/26 14:53:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:21:06 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	initialize_data(t_mini *mini, char **envp)
 	mini->expansion = 0;
 	mini->expanded = 0;
 	mini->t_quote = '\0';
+	mini->pipex = NULL;
 }

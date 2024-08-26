@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/20 12:35:10 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:23:01 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv, char **envp)
 			input = readline("minishell>");
 			mini.input.raw_info = input;
 			divide_commands(&mini);
+			execute_commands(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
 			if (input && *input)

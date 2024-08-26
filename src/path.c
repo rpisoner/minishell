@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 18:39:46 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/15 12:09:15 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:27:46 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,60 @@ char	**search_path(char **envp)
 	}
 	return (path);
 }
-/*
-void	set_command_free(t_mini *mini, char *cmd, char *command_path, int j)
-{
-	mini->commands_paths[j] = ft_strdup(cmd);
-	free(command_path);
-}
 
-void	command_path(t_mini *mini, char *command, int j)
+void	f_path(char **paths)
 {
-	size_t	i;
-	char	*slash_join;
-	char	**command_and_flags;
-	char	*command_path;
+	int	i;
 
 	i = 0;
-	command_and_flags = ft_split(command, ' ');
-	slash_join = ft_strjoin(mini->path[i], "/");
-	command_path = ft_strjoin(slash_join, command_and_flags[0]);
-	free(slash_join);
-	while (mini->path[i] != NULL && access(command_path, X_OK) != 0)
+	while (paths[i])
 	{
+		free(paths[i]);
 		i++;
-		free(command_path);
-		slash_join = ft_strjoin(mini->path[i], "/");
-		command_path = ft_strjoin(slash_join, command_and_flags[0]);
-		free(slash_join);
 	}
-	if (ft_strchr(command, '/') != 0)
-		set_command_free(mini, command, command_path, j);
+	free(paths);
 }
-*/
+
+int	prove_path(char *paths, t_mini *mini)
+{
+	char	*join;
+	char	*command;
+
+	join = ft_strjoin(paths, "/");
+	command = ft_strjoin(join, mini->input.words[0]);
+	free(join);
+	if (access (command, X_OK) == 0)
+	{
+		mini->pipex->path = command;
+		return (0);
+	}
+	free(command);
+	return (1);
+}
+
+int	get_cmd_path(t_mini *mini)
+{
+	int		i;
+	char	**paths;
+
+	i = 0;
+	if (ft_strchr(mini->input.words[0], '/') != NULL)
+	{
+		mini->pipex->path = mini->input.words[0];
+		return (0);
+	}
+	paths = search_path(mini->envp);
+	if (!paths)
+		return (1);
+	while (paths[i])
+	{
+		if (prove_path(paths[i], mini) == 0)
+		{
+			f_path(paths);
+			return (0);
+		}
+		i++;
+	}
+	f_path(paths);
+	return (1);
+}
