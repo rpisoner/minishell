@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/26 15:19:42 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/27 11:14:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	one_cmd(t_mini *mini)
 
 	pid = fork();
 	if (pid < 0)
-		return ;
-	if (pid == 0)
 	{
-		execute_one_cmd(mini);
+		mini->status = 1;
+		return ;
 	}
+	if (pid == 0)
+		execute_one_cmd(mini);
 	waitpid(pid, &status, 0);
 	mini->status = WEXITSTATUS(status);
 }
@@ -33,9 +34,9 @@ void	one_cmd(t_mini *mini)
 void	execute_one_cmd(t_mini *mini)
 {
 	if ((get_cmd_path(mini)))
-		return ;
+		exec_error();
 	execve(mini->pipex->path, mini->input.words, mini->envp);
-	perror("Error");
+	exec_error();
 }
 
 void	init_pipex(t_pipe **pipex)
@@ -52,5 +53,4 @@ void	execute_commands(t_mini *mini)
 {
 	init_pipex(&(mini->pipex));
 	one_cmd(mini);
-	//free(&(mini->pipex));
 }

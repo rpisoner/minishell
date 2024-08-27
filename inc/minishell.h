@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/26 15:20:53 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/27 11:14:49 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,9 @@ void	expander(t_mini *mini);
 //ERRRORS
 void	unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
+void	exec_error(void);
+
+//FREE STRUCT
+void	free_stuff(t_mini *mini);
 
 #endif

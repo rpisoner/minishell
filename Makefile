@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/08/21 13:17:34 by jolivare         ###   ########.fr        #
+#    Updated: 2024/08/27 10:40:32 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/ft_strjoin_char.c \
 		src/parser/tokenizer.c src/exec.c src/path.c utils/check_expansion.c \
-		src/initialize.c src/errors.c src/parser/expander.c
+		src/initialize.c src/errors.c src/parser/expander.c utils/free_stuff.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 

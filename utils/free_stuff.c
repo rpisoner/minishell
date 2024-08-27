@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/27 11:59:47 by jolivare         ###   ########.fr       */
+/*   Created: 2024/08/27 10:36:11 by jolivare          #+#    #+#             */
+/*   Updated: 2024/08/27 10:41:41 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	unclosed_quote_check(t_mini *mini)
+void	free_stuff(t_mini *mini)
 {
-	if (mini->quoted)
+	int	i;
+
+	i = 0;
+	while (mini->input.words[i])
 	{
-		printf("Error: comillas sin cerrar\n");
-		return ;
+		free(mini->input.words[i]);
+		i++;
 	}
-}
-
-void	malloc_error(void)
-{
-	printf("Error en alocación de memoria\n");
-	exit (1);
-}
-
-void	exec_error(void)
-{
-	perror("Error");
-	exit(127);
+	free(mini->input.words);
 }
