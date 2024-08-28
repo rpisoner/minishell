@@ -6,14 +6,13 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 11:30:20 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:37:59 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
 /**Si hay más de un comando hacemos como en el pipex, si no hardcodeada histórica*/
-
 
 void	one_cmd(t_mini *mini)
 {

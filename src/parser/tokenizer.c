@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 11:32:40 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:09:17 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	divide_commands(t_mini *mini)
 				if (!mini->input.current_word)
 					malloc_error();
 			}
-			if (mini->t_quote != mini->input.raw_info[i] && mini->expanded == 0)
+			if (mini->t_quote != mini->input.raw_info[i] && mini->expanded == 0
+				&& mini->input.raw_info[i] != '|')
 				mini->input.current_word[j++] = mini->input.raw_info[i];
 			expander_setter(mini);
 		}
