@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/28 11:15:58 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/08/27 10:57:19 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/08/27 17:00:35 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	unclosed_quote_check(t_mini *mini)
+void	handle_sigint(int sig)
 {
-	if (mini->quoted)
-	{
-		printf("Error: comillas sin cerrar\n");
-		return ;
-	}
+	(void)sig;
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }
 
-void	malloc_error(void)
+void	signals(void)
 {
-	printf("Error en alocación de memoria\n");
-	exit (1);
-}
-
-void	exec_error(void)
-{
-	perror("Error");
-	exit(127);
+	//signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, SIG_IGN);
 }

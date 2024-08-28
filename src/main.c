@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/26 15:23:01 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:24:12 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,21 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argv;
 	initialize_data(&mini, envp);
+	signals();
 	if (argc == 1)
 	{
 		while (1)
 		{
 			input = readline("minishell>");
 			mini.input.raw_info = input;
+			if (!input)
+			{
+			//	free(input);
+			//	free_stuff(&mini);
+				clear_history();
+				exit(0);
+			}
 			divide_commands(&mini);
-			execute_commands(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
 			if (input && *input)
@@ -34,10 +41,13 @@ int	main(int argc, char **argv, char **envp)
 			if (input && ft_strcmp(input, "exit") == 0)
 			{
 				free(input);
+				free_stuff(&mini);
 				clear_history();
 				exit(0);
 			}
+			execute_commands(&mini);
 			free (input);
+			free_stuff(&mini);
 		}
 		clear_history();
 		return (0);

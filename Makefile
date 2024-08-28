@@ -3,18 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
+#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/08/21 13:17:34 by jolivare         ###   ########.fr        #
+#    Updated: 2024/08/28 11:18:19 by rpisoner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
+NAME = minishell
+
 SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/ft_strjoin_char.c \
-		src/parser/tokenizer.c src/exec.c src/path.c utils/check_expansion.c \
-		src/initialize.c src/errors.c src/parser/expander.c
+		src/parser/tokenizer.c src/exec.c src/path.c \
+		src/initialize.c src/errors.c src/parser/expander.c src/signals.c \
+		utils/free_stuff.c src/parser/quote_checker.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

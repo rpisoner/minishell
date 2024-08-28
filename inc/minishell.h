@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/26 15:20:53 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:19:15 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_input
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
 	char	*raw_info;
 	char	**words;
+	char	*current_word;
 	char	*cmds;
 	char	*flags;
 	char	*path;
@@ -55,7 +56,6 @@ typedef struct s_mini
 	t_pipe	*pipex;
 	char	**envp;
 	char	**path;
-	int		expansion;
 	int		expanded;
 	int		cmd_num;
 	int		status;
@@ -72,7 +72,6 @@ void	divide_commands(t_mini *mini);
 
 int		ft_isspace(char c);
 char	*ft_strjoin_char(char *s1, char c);
-void	check_expansion(t_mini *mini, char *expanded, int i);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
@@ -80,16 +79,18 @@ int		get_cmd_path(t_mini *mini);
 //EXECUTE FUNCTIONS
 void	execute_one_cmd(t_mini *mini);
 void	execute_commands(t_mini *mini);
-
-void	expand_var(t_mini *mini, char *var, int i);
-char	*expand_single_var(t_mini *mini, char *var, int *j);
-char	*search_var(t_mini *mini, char *var);
-char	*generate_correct_var(char *var, int i);
-void	process_expansion(t_mini *mini, char *var, char *expanded, int *j);
-void	expander(t_mini *mini);
-
+//EXPAND FUNCTIONS
+void	expander_check(t_mini *mini, int *i, int *j);
+void	expander_setter(t_mini *mini);
 //ERRRORS
+void	exec_error(void);
 void	unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
+//QUOTE CHECKER
+void	quote_check(t_mini *mini, int i);
+//SIGNALS
+void	signals(void);
+//FREE FUNCTIONS
+void	free_stuff(t_mini *mini);
 
 #endif

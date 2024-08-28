@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   quote_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/28 11:15:58 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/08/27 16:56:09 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/08/27 16:57:04 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-void	unclosed_quote_check(t_mini *mini)
+void	quote_check(t_mini *mini, int i)
 {
-	if (mini->quoted)
+	if (mini->input.raw_info[i] == '\''
+		|| mini->input.raw_info[i] == '\"')
 	{
-		printf("Error: comillas sin cerrar\n");
-		return ;
+		if (mini->quoted == 0)
+		{
+			mini->quoted = 1;
+			mini->t_quote = mini->input.raw_info[i];
+		}
+		else if (mini->input.raw_info[i] == mini->t_quote)
+			mini->quoted = 0;
 	}
-}
-
-void	malloc_error(void)
-{
-	printf("Error en alocación de memoria\n");
-	exit (1);
-}
-
-void	exec_error(void)
-{
-	perror("Error");
-	exit(127);
 }
