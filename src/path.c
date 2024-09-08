@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 18:39:46 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/26 15:27:46 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/08 18:16:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	f_path(char **paths)
 	free(paths);
 }
 
-int	prove_path(char *paths, t_mini *mini)
+int	test_path(char *paths, t_mini *mini)
 {
 	char	*join;
 	char	*command;
 
 	join = ft_strjoin(paths, "/");
-	command = ft_strjoin(join, mini->input.words[0]);
+	command = ft_strjoin(join, mini->input.commands->words[0]);
 	free(join);
 	if (access (command, X_OK) == 0)
 	{
@@ -64,9 +64,9 @@ int	get_cmd_path(t_mini *mini)
 	char	**paths;
 
 	i = 0;
-	if (ft_strchr(mini->input.words[0], '/') != NULL)
+	if (ft_strchr(mini->input.commands->words[0], '/') != NULL)
 	{
-		mini->pipex->path = mini->input.words[0];
+		mini->pipex->path = mini->input.commands->words[0];
 		return (0);
 	}
 	paths = search_path(mini->envp);
@@ -74,7 +74,7 @@ int	get_cmd_path(t_mini *mini)
 		return (1);
 	while (paths[i])
 	{
-		if (prove_path(paths[i], mini) == 0)
+		if (test_path(paths[i], mini) == 0)
 		{
 			f_path(paths);
 			return (0);

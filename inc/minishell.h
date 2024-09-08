@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 11:33:15 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/08 18:03:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,19 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+
+typedef struct s_command
+{
+	char 				**words;
+	struct s_command	*next;
+} t_command;
+
 /**Estructura para el input */
 typedef struct s_input
 {
 	/** En este caso si pillamos las flags porque no podemos hacer el split*/
-	char	*raw_info;
-	char	**words;
+	char		*raw_info;
+	t_command	*commands;
 	char	*current_word;
 	char	*cmds;
 	char	*flags;
@@ -71,6 +78,7 @@ void	get_env(t_mini *mini);
 void	divide_commands(t_mini *mini);
 
 int		ft_isspace(char c);
+void	create_new_command_node(t_mini *mini);
 char	*ft_strjoin_char(char *s1, char c);
 
 //PATH FUNCTIONS

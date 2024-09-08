@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:36:11 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/27 10:41:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/08 18:17:04 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	free_stuff(t_mini *mini)
 	int	i;
 
 	i = 0;
-	while (mini->input.words[i])
+	while (mini->input.commands->words[i])
 	{
-		free(mini->input.words[i]);
+		free(mini->input.commands->words[i]);
 		i++;
 	}
-	free(mini->input.words);
+	free(mini->input.commands->words);
 }

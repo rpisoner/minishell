@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 15:37:59 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/08 18:14:20 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	execute_one_cmd(t_mini *mini)
 {
 	if ((get_cmd_path(mini)))
 		exec_error();
-	execve(mini->pipex->path, mini->input.words, mini->envp);
+	//execve(mini->pipex->path, mini->input.words, mini->envp);
 	exec_error();
 }
 

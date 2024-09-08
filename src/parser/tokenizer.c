@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 12:09:17 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/08 18:26:46 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,14 @@ int	numspli(char const *s, char c)
 	return (cont);
 }
 
-void	store_word(t_mini *mini, int *j, int *k)
+void	store_word(t_mini *mini, t_command *current_cmd, int *j, int *k)
 {
 	if (mini->input.current_word && *j > 0)
 	{
 		mini->input.current_word[*j] = '\0';
-		mini->input.words[(*k)++] = mini->input.current_word;
+		current_cmd->words[(*k)++] = mini->input.current_word;
 		*j = 0;
+		mini->input.current_word = NULL;
 	}
 }
 
@@ -69,12 +70,23 @@ void	divide_commands(t_mini *mini)
 	j = 0;
 	k = 0;
 	mini->input.current_word = NULL;
-	mini->input.words = (char **)malloc(sizeof(char *)
+	create_new_command_node(mini);
+	t_command	*current_cmd = mini->input.commands;
+	current_cmd->words = (char **)malloc(sizeof(char *)
 			* (numspli(mini->input.raw_info, ' ') + 1));
 	while (mini->input.raw_info[++i] != '\0')
 	{
 		if (is_delimiter(mini->input.raw_info[i]) && mini->quoted == 0)
-			store_word(mini, &j, &k);
+			store_word(mini, current_cmd, &j, &k);
+		else if (mini->input.raw_info[i] == '|')
+		{
+			store_word(mini, current_cmd, &j, &k);
+			create_new_command_node(mini);
+			current_cmd = current_cmd->next;
+			current_cmd->words = (char **)malloc(sizeof(char *)
+					* (numspli(mini->input.raw_info, ' ') + 1));
+			k = 0;
+		}
 		else
 		{
 			quote_check(mini, i);
@@ -86,14 +98,18 @@ void	divide_commands(t_mini *mini)
 				if (!mini->input.current_word)
 					malloc_error();
 			}
-			if (mini->t_quote != mini->input.raw_info[i] && mini->expanded == 0
-				&& mini->input.raw_info[i] != '|')
-				mini->input.current_word[j++] = mini->input.raw_info[i];
+			mini->input.current_word[j++] = mini->input.raw_info[i];
 			expander_setter(mini);
 		}
 	}
-	store_word(mini, &j, &k);
-	mini->input.words[k] = NULL;
+	store_word(mini, current_cmd, &j, &k);
+	printf("Hola\n");
+	current_cmd->words[k] = NULL;
 	unclosed_quote_check(mini);
-	print_stuff(mini->input.words);
+	/**t_command *cmd_node = mini->input.commands;
+    while (cmd_node)
+    {
+        print_stuff(cmd_node->words);
+        cmd_node = cmd_node->next;
+    }*/
 }
