@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/11 10:59:06 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:42:27 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	initialize_input(t_mini *mini)
 			mini->cmd_num += 1;
 		i++;
 	}
-	//mini->parsed = (t_parsed **)malloc(mini->cmd_num * sizeof(t_parsed *));
+	mini->parsed = (t_parsed **)malloc(mini->cmd_num * sizeof(t_parsed *));
 }
 
 void	initialize_data(t_mini *mini, char **envp)

@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/05 21:19:08 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:36:16 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <sys/stat.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
 
 /**Estructura para el input */
 typedef struct s_input
@@ -83,6 +84,9 @@ void	store_word(t_mini *mini, int *j, int *k);
 //EXTRA LIBFT UTILS 
 int		ft_isspace(char c);
 char	*ft_strjoin_char(char *s1, char c);
+
+//PARSER FUNCTIONS
+void	parse_commands(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
