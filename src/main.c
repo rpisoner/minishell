@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 11:28:51 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:10:57 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			if (!input)
 			{
-			//	free(input);
 			//	free_stuff(&mini);
+				free(input);
 				clear_history();
 				exit(0);
 			}
-			divide_commands(&mini);
+			initialize_input(&mini);
+			lexer(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
 			if (input && *input)

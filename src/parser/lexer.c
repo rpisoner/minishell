@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 12:09:17 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/05 21:33:03 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-void	print_stuff(char **stuff)
-{
-	size_t	i;
-
-	i = 0;
-	while (stuff[i])
-	{
-		printf("Words[%ld]: %s\n", i, stuff[i]);
-		i++;
-	}
-	printf("Words[%ld]: %s\n", i, stuff[i]);
-}
-
-int	is_delimiter(char c)
-{
-	return (ft_isspace(c));
-}
 
 int	numspli(char const *s, char c)
 {
@@ -49,6 +31,14 @@ int	numspli(char const *s, char c)
 	return (cont);
 }
 
+void	create_word(t_mini *mini)
+{
+	mini->input.current_word = (char *)malloc(sizeof(char)
+			* (ft_strlen(mini->input.raw_info) + 1));
+	if (!mini->input.current_word)
+		malloc_error();
+}
+
 void	store_word(t_mini *mini, int *j, int *k)
 {
 	if (mini->input.current_word && *j > 0)
@@ -59,37 +49,37 @@ void	store_word(t_mini *mini, int *j, int *k)
 	}
 }
 
-void	divide_commands(t_mini *mini)
+void	init_stuff(t_mini *mini, int *i, int *j, int *k)
+{
+	*i = -1;
+	*j = 0;
+	*k = 0;
+	mini->input.current_word = NULL;
+	mini->input.words = (char **)malloc(sizeof(char *)
+			* ((numspli(mini->input.raw_info, ' ') + (mini->cmd_num * 2)))); //TAMAÑO INCORRECTO PARA ESTO
+	if (!mini->input.words)
+		malloc_error();
+}
+
+void	lexer(t_mini *mini)
 {
 	int		i;
 	int		j;
 	int		k;
 
-	i = -1;
-	j = 0;
-	k = 0;
-	mini->input.current_word = NULL;
-	mini->input.words = (char **)malloc(sizeof(char *)
-			* (numspli(mini->input.raw_info, ' ') + 1));
+	init_stuff(mini, &i, &j, &k);
 	while (mini->input.raw_info[++i] != '\0')
 	{
-		if (is_delimiter(mini->input.raw_info[i]) && mini->quoted == 0)
+		if ((ft_isspace(mini->input.raw_info[i]) && mini->quoted == 0))
 			store_word(mini, &j, &k);
 		else
 		{
-			quote_check(mini, i);
-			expander_check(mini, &i, &j);
-			if (j == 0)
-			{
-				mini->input.current_word = (char *)malloc(sizeof(char)
-						* (ft_strlen(mini->input.raw_info) + 1));
-				if (!mini->input.current_word)
-					malloc_error();
-			}
-			if (mini->t_quote != mini->input.raw_info[i] && mini->expanded == 0
-				&& mini->input.raw_info[i] != '|')
+			checkers(mini, &i, &j, &k);
+			if (j == 0 && mini->input.raw_info[i] != '|')
+				create_word(mini);
+			if (mini->ign_char == 0)
 				mini->input.current_word[j++] = mini->input.raw_info[i];
-			expander_setter(mini);
+			ign_char_setter(mini);
 		}
 	}
 	store_word(mini, &j, &k);

@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 15:37:59 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:01:39 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ void	execute_commands(t_mini *mini)
 {
 	init_pipex(&(mini->pipex));
 	one_cmd(mini);
-	//free(&(mini->pipex));
+	free((mini->pipex));
 }

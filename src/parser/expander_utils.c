@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 17:55:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/28 15:38:06 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/05 21:18:51 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	expander_setter(t_mini *mini)
+void	ign_char_setter(t_mini *mini)
 {
-	if (mini->expanded == 1)
-		mini->expanded = 0;
+	if (mini->ign_char == 1)
+		mini->ign_char = 0;
 }
 
-static char	*search_var(t_mini *mini, char *var)
+char	*search_var(t_mini *mini, char *var)
 {
 	int		i;
 	int		len;
@@ -37,7 +37,7 @@ static char	*search_var(t_mini *mini, char *var)
 	return (NULL);
 }
 
-static char	*var_name(t_mini *mini, int i)
+char	*var_name(t_mini *mini, int i)
 {
 	int		aux;
 	char	*var_name;
@@ -55,7 +55,7 @@ static char	*var_name(t_mini *mini, int i)
 	return (var_name);
 }
 
-static void	annex_content(t_mini *mini, char *var_content, int *j)
+void	annex_content(t_mini *mini, char *var_content, int *j)
 {
 	char	*new_word;
 
@@ -76,27 +76,5 @@ static void	annex_content(t_mini *mini, char *var_content, int *j)
 				* (ft_strlen(var_content) + 1));
 		ft_strcpy(mini->input.current_word, var_content);
 		*j = ft_strlen(var_content);
-	}
-}
-
-void	expander_check(t_mini *mini, int *i, int *j)
-{
-	char	*variable_name;
-	char	*var_content;
-
-	variable_name = NULL;
-	var_content = NULL;
-	if ((mini->input.raw_info[*i] == '$' && !(mini->quoted))
-		|| (mini->input.raw_info[*i] == '$' && mini->quoted
-			&& mini->t_quote == '\"'))
-	{
-		variable_name = var_name(mini, *(i));
-		var_content = search_var(mini, variable_name);
-		(*i) += ft_strlen(variable_name);
-		free(variable_name);
-		mini->expanded = 1;
-		if (!var_content)
-			return ;
-		annex_content(mini, var_content, j);
 	}
 }
