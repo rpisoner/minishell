@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/09/13 13:05:08 by jolivare         ###   ########.fr        #
+#    Updated: 2024/09/13 15:59:40 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ c: all clean
 
 .PHONY: all clean fclean re
 
-r: all
+r: all clean
 	@clear
 	@./$(NAME)
 

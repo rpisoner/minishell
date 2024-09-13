@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 12:19:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/08/20 12:39:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:10:08 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	close_parent(t_pipe *pipex)
 		unlink("here_doc");
 }
 
-int	pipex(t_mini *mini)
+int	pipex(t_pipe *pipex)
 {
 	int	i;
 

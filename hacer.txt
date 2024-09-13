@@ -1,30 +1,9 @@
 Cosas que hacer(Subject):
 
-Ver como gestinamos el input y donde guardamos las cosas(prohibido split por espacios)
-Ejecutar los comandos (creo que es fácil porque esto tiene pinta de printear lo que haga el comando)(creo que esto lo se hacer)
-Implementar el pipex para las redirecciones (bonus) (Este es muy fácil)
+Pasar todo al pipex para ejecutar los comandos
 Las señales (Ctrl-D, Ctrl-C y Ctrl-\) (Hacer al final) (Ctrl-C imprime nueva línea no termina la ejecución)
 Built-ins
-El historial (Esto creo que lo hago en dos días)
-Implementar las pipes (|)
-Las variables de entorno
 Gestionar echo $? (Esto son los estados de salida, es mirar bien con que salimos en exit)
-Gestionar las comillas, contrabarra, punto y coma, comillas altas y el signo del dolar
 El historial (Esto ya se como hacerlo, es facil hacerlo con el readline)
 Ejecutar los comandos en el PATH (esto supongo que será como en el pipex)
 Hay que actualizar envp cuando se añada una nueva variable de entorno
-
-(Implementación)
-Al contar los comandos no contar el numero de flags
-Cuando ejecutemos el comando hay que borrar el input tokenizado para poder almacenar el siguiente
-
-
-Ideas:
--Tokenización:
-	-Flags:
-		Si hay un menos delante si o si es flag del comando de antes(guardamos con un int que es comando con flag y le hacemos un join)
-	Como lo vamos a tokenizar es pillar la posición anterior del array y hacer un join supongo
-
-En vez de la lista usar substr y así gestionar ya las comillas
-
-Si un argumento no tiene estrictamente un < entonces es realmente una flag y hay que gestionarlo como tal

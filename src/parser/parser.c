@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 14:34:57 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:50:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,18 @@ void	parse_commands(t_mini *mini)
 		j++;
 		l++;
 	}
-	// i = -1;
-	// while (mini->parsed[++i])
-	// {
-	// 	j = 0;
-	// 	printf("-> %d\n", i);
-	// 	while (mini->parsed[i]->cmd[j])
-	// 	{
-	// 		printf("Parsed[%d]: ", i);
-	// 		printf("Last parsed position: [%s]\n", mini->parsed[i]->cmd[j]);
-	// 		j++;
-	// 	}
-	// 	printf("\n");
-	// }
+	i = -1;
+	while (mini->parsed[++i])
+	{
+		j = 0;
+		while (mini->parsed[i]->cmd[j])
+		{
+			printf("Parsed[%d]: ", i);
+			printf("Last parsed position: [%s]\n", mini->parsed[i]->cmd[j]);
+			j++;
+		}
+		printf("\n");
+	}
 }
 
 // void	parse_commands(t_mini *mini)
