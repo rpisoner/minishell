@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/08 18:14:20 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:58:12 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	execute_one_cmd(t_mini *mini)
 {
 	if ((get_cmd_path(mini)))
 		exec_error();
-	//execve(mini->pipex->path, mini->input.words, mini->envp);
+	execve(mini->pipex->path, mini->input.words, mini->envp);
 	exec_error();
 }
 
@@ -53,5 +53,5 @@ void	execute_commands(t_mini *mini)
 {
 	init_pipex(&(mini->pipex));
 	one_cmd(mini);
-	//free(&(mini->pipex));
+	free((mini->pipex));
 }

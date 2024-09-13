@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/08/28 11:29:42 by rpisoner         ###   ########.fr        #
+#    Updated: 2024/09/13 15:59:40 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ NAME = minishell
 NAME = minishell
 
 SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/ft_strjoin_char.c \
-		src/parser/tokenizer.c src/exec.c src/path.c \
-		src/initialize.c src/errors.c src/parser/expander.c src/signals.c \
-		utils/free_stuff.c src/parser/quote_checker.c
+		src/parser/lexer.c src/exec.c src/path.c \
+		src/initialize.c src/errors.c src/parser/expander_utils.c src/parser/checkers.c src/signals.c \
+		utils/free_stuff.c utils/dev_utils.c src/parser/parser.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -47,3 +47,11 @@ re: fclean all
 c: all clean
 
 .PHONY: all clean fclean re
+
+r: all clean
+	@clear
+	@./$(NAME)
+
+v: all
+	@clear
+	@valgrind --leak-check=full ./$(NAME)	

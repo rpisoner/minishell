@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/08 18:03:26 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/13 10:46:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,55 +31,63 @@
 # include <readline/history.h>
 
 
-typedef struct s_command
-{
-	char 				**words;
-	struct s_command	*next;
-} t_command;
-
 /**Estructura para el input */
 typedef struct s_input
 {
-	/** En este caso si pillamos las flags porque no podemos hacer el split*/
-	char		*raw_info;
-	t_command	*commands;
+	char	*raw_info;
 	char	*current_word;
-	char	*cmds;
-	char	*flags;
+	char	**words;
+}	t_input;
+
+typedef struct s_parsed
+{
+	char	**cmd;
 	char	*path;
 	int		here_doc;
 	int		infile;
 	int		outfile;
 	char	**infiles;
 	char	**outfiles;
-}	t_input;
+}	t_parsed;
 
 /** Estructura para la ejecución*/
 // Se va a parecer mucho a la del pipex esta
 // Yo la haría la principal(donde linkamos las demás)
 typedef struct s_mini
 {
-	t_input	input;
-	t_pipe	*pipex;
-	char	**envp;
-	char	**path;
-	int		expanded;
-	int		cmd_num;
-	int		status;
-	int		more_envs;
-	int		quoted;
-	char	t_quote;
+	t_input		input;
+	t_pipe		*pipex;
+	t_parsed	**parsed;
+	char		**envp;
+	char		**path;
+	int			ign_char;
+	int			cmd_num;
+	int			quoted;
+	char		t_quote;
+	int			status;
 }	t_mini;
 
-void	initialize_data(t_mini *mini, char **envp);
+//DEV_UTILS FUNCTIONS
+void	print_stuff(char **stuff);
 
+//INITIALIZE FUNCTIONS
+void	initialize_data(t_mini *mini, char **envp);
+void	initialize_input(t_mini *mini);
+
+//BUILT INS
 void	get_env(t_mini *mini);
 
-void	divide_commands(t_mini *mini);
+//TOKENIZER FUNCTIONS
+void	lexer(t_mini *mini);
+void	store_word(t_mini *mini, int *j, int *k);
 
+//EXTRA LIBFT UTILS 
 int		ft_isspace(char c);
-void	create_new_command_node(t_mini *mini);
 char	*ft_strjoin_char(char *s1, char c);
+
+//PARSER FUNCTIONS
+void	parse_commands(t_mini *mini);
+int		find_pipe(char *str);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
@@ -87,17 +95,22 @@ int		get_cmd_path(t_mini *mini);
 //EXECUTE FUNCTIONS
 void	execute_one_cmd(t_mini *mini);
 void	execute_commands(t_mini *mini);
-//EXPAND FUNCTIONS
+//EXPAND UTILS FUNCTIONS
+void	annex_content(t_mini *mini, char *var_content, int *j);
+char	*var_name(t_mini *mini, int i);
+char	*search_var(t_mini *mini, char *var);
+//CHECKERS
+void	ign_char_setter(t_mini *mini);
 void	expander_check(t_mini *mini, int *i, int *j);
-void	expander_setter(t_mini *mini);
+void	pipe_check(t_mini *mini, int *i, int *j, int *k);
+void	quote_check(t_mini *mini, int i);
+void	checkers(t_mini *mini, int *i, int *j, int *k);
+//SIGNALS
+void	signals(void);
 //ERRRORS
 void	exec_error(void);
 void	unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
-//QUOTE CHECKER
-void	quote_check(t_mini *mini, int i);
-//SIGNALS
-void	signals(void);
 //FREE FUNCTIONS
 void	free_stuff(t_mini *mini);
 

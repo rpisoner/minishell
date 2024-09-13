@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isspace.c                                          :+:      :+:    :+:   */
+/*   dev_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 11:40:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/07/25 11:46:49 by jolivare         ###   ########.fr       */
+/*   Created: 2024/09/04 10:29:46 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/09/04 10:30:16 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int	ft_isspace(char c)
+void	print_stuff(char **stuff)
 {
-	if (c && (c == ' ' || c == '\n' || c == '\t' ||
-			c == '\v' || c == '\f' || c == '\r'))
-		return (1);
-	return (0);
-}
+	size_t	i;
 
+	i = 0;
+	while (stuff[i])
+	{
+		printf("Words[%ld]: %s\n", i, stuff[i]);
+		i++;
+	}
+	printf("Words[%ld]: %s\n", i, stuff[i]);
+}

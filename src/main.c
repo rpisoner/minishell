@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/08 18:23:55 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/13 10:53:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			if (!input)
 			{
-			//	free(input);
 			//	free_stuff(&mini);
+				free(input);
 				clear_history();
 				exit(0);
 			}
-			divide_commands(&mini);
-			printf("Hola1\n");
+			initialize_input(&mini);
+			lexer(&mini);
+			if (mini.cmd_num > 1)
+				parse_commands(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
 			if (input && *input)
@@ -46,8 +48,7 @@ int	main(int argc, char **argv, char **envp)
 				clear_history();
 				exit(0);
 			}
-			printf("Hola2\n");
-			//execute_commands(&mini);
+			execute_commands(&mini);
 			free (input);
 			free_stuff(&mini);
 		}
