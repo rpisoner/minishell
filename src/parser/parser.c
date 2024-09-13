@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/11 18:06:19 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:34:57 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,62 @@ void	parse_commands(t_mini *mini)
 	int k;
 	int l;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
+	i = 0;	/* Iterar en input.words */
+	k = 0;	/* Posicion del comando a guardarse  */
+	l = 0;	/* Posicion del argumento dentro del comando */
+	j = 0;	/* Posicion del ultimo argumento del ultimo comando  */
 	while (mini->input.words[i])
 	{
-		// printf("input: [%s]\n", mini->input.words[i]);
-		if (ft_strcmp(mini->input.words[i], "|"))
+	// 	printf("\t· Checking: [%s]\n", mini->input.words[i]);
+		if (ft_strcmp(mini->input.words[i], "|") == 0)
 		{
 			l = 0;
-			mini->parsed[k]->cmd = (char **)malloc((i - j) * sizeof(char *));
+			mini->parsed[k]->cmd = (char **)ft_calloc((i - j + 1), sizeof(char *));
 			if (!mini->parsed[k]->cmd)
 				malloc_error();
-			while (j != i)
+			while (i != j)
 			{
 				mini->parsed[k]->cmd[l] = mini->input.words[j];
+				// printf("\t[ %d ] {%s}\n", l, mini->parsed[k]->cmd[l]);
 				j++;
 				l++;
 			}
+			j = i + 1;
 			k++;
-			printf("j value: [%d]\n", j);
 		}
 		i++;
 	}
-	printf("Webo\n");
-	printf("first parsed position: [%s]\n", mini->parsed[0]->cmd[0]);
+	l = 0;
+	mini->parsed[k]->cmd = (char **)ft_calloc((i - j + 1), sizeof(char *));
+	while (mini->input.words[j])
+	{
+		// printf("input.words: [%s]\n", mini->input.words[j]);
+		mini->parsed[k]->cmd[l] = mini->input.words[j];
+		j++;
+		l++;
+	}
+	// i = -1;
+	// while (mini->parsed[++i])
+	// {
+	// 	j = 0;
+	// 	printf("-> %d\n", i);
+	// 	while (mini->parsed[i]->cmd[j])
+	// 	{
+	// 		printf("Parsed[%d]: ", i);
+	// 		printf("Last parsed position: [%s]\n", mini->parsed[i]->cmd[j]);
+	// 		j++;
+	// 	}
+	// 	printf("\n");
+	// }
 }
 
+// void	parse_commands(t_mini *mini)
+// {
+// 	int	i;
 
+// 	i = 0;
+// 	while (ft_strcmp(mini->input.words[i], "|"))
+// 	{
+// 		mini
+// 	}
+// }

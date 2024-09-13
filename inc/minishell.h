@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/11 17:36:16 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/13 10:46:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char	*ft_strjoin_char(char *s1, char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
+int		find_pipe(char *str);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);

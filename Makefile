@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/09/11 17:36:43 by rpisoner         ###   ########.fr        #
+#    Updated: 2024/09/13 13:05:08 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,3 +47,11 @@ re: fclean all
 c: all clean
 
 .PHONY: all clean fclean re
+
+r: all
+	@clear
+	@./$(NAME)
+
+v: all
+	@clear
+	@valgrind --leak-check=full ./$(NAME)	
