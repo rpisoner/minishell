@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 16:15:27 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:34:27 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,18 @@ void	manage_single_redir(t_mini *mini)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
+	mini->input.infile = -1;
 	mini->input.outfile = -1;
-	while (mini->input.words[i])
+	while (mini->input.words[++i])
 	{
+		if (ft_strcmp(mini->input.words[i], "<") == 0)
+		{
+			mini->input.infile = open(mini->input.words[i + 1], O_RDONLY);
+			dprintf(2, "=> {%d}\n", mini->input.infile);
+			i++;
+			//mini->input.words[i] = NULL;
+		}
 		if (ft_strcmp(mini->input.words[i], ">") == 0)
 		{
 			mini->input.outfile = open(mini->input.words[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -57,6 +65,6 @@ void	manage_single_redir(t_mini *mini)
 			mini->input.outfile = open(mini->input.words[i + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 			mini->input.words[i] = NULL;
 		}
-		i++;
+		// i++;
 	}
 }

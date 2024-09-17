@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 15:08:56 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:35:50 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,26 @@ void	one_cmd(t_mini *mini)
 		mini->status = 1;
 		return ;
 	}
-	manage_single_redir(mini);
 	if (pid == 0)
-		execute_one_cmd(mini);
+	{
+		manage_single_redir(mini);
+		execute_one_cmd(mini);	
+	}
 	waitpid(pid, &status, 0);
 	mini->status = WEXITSTATUS(status);
 }
 
 void	execute_one_cmd(t_mini *mini)
 {
+	dprintf(2, "\t=> [%d] <=\n", mini->input.infile);
+	if (mini->input.infile != -1)
+	{
+		if (dup2(mini->input.infile, STDIN_FILENO) < 0)
+		{
+			printf("Error en primer dup\n");
+			return ;
+		}
+	}
 	if (mini->input.outfile != -1)
 	{
 		if (dup2(mini->input.outfile, STDOUT_FILENO) < 0)
@@ -43,6 +54,7 @@ void	execute_one_cmd(t_mini *mini)
 		}
 		close (mini->input.outfile);
 	}
+	while (1) ;
 	if ((get_cmd_path(mini)))
 		exec_error();
 	execve(mini->pipex->path, mini->input.words, mini->envp);
@@ -62,6 +74,7 @@ void	init_pipex(t_pipe **pipex)
 void	execute_commands(t_mini *mini)
 {
 	init_pipex(&(mini->pipex));
-	one_cmd(mini);
+	if (mini->cmd_num == 1)
+		one_cmd(mini);
 	free((mini->pipex));
 }

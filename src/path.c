@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 18:39:46 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/08/26 15:27:46 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:21:09 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	f_path(char **paths)
 	free(paths);
 }
 
-int	prove_path(char *paths, t_mini *mini)
+int	test_path(char *paths, t_mini *mini)
 {
 	char	*join;
 	char	*command;
@@ -74,7 +74,7 @@ int	get_cmd_path(t_mini *mini)
 		return (1);
 	while (paths[i])
 	{
-		if (prove_path(paths[i], mini) == 0)
+		if (test_path(paths[i], mini) == 0)
 		{
 			f_path(paths);
 			return (0);
