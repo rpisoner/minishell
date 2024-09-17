@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 10:46:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:03:21 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_input
 	char	*raw_info;
 	char	*current_word;
 	char	**words;
+	int		infile;
+	int		outfile;
 }	t_input;
 
 typedef struct s_parsed
@@ -87,7 +89,9 @@ char	*ft_strjoin_char(char *s1, char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
-int		find_pipe(char *str);
+void	store_last_words(t_mini *mini, int i, int j, int k);
+void	manage_redir(t_mini *mini);
+void	manage_single_redir(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);

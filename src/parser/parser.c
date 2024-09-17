@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 15:50:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:13:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	parse_commands(t_mini *mini)
 	j = 0;	/* Posicion del ultimo argumento del ultimo comando  */
 	while (mini->input.words[i])
 	{
-	// 	printf("\t· Checking: [%s]\n", mini->input.words[i]);
 		if (ft_strcmp(mini->input.words[i], "|") == 0)
 		{
 			l = 0;
@@ -35,7 +34,6 @@ void	parse_commands(t_mini *mini)
 			while (i != j)
 			{
 				mini->parsed[k]->cmd[l] = mini->input.words[j];
-				// printf("\t[ %d ] {%s}\n", l, mini->parsed[k]->cmd[l]);
 				j++;
 				l++;
 			}
@@ -44,15 +42,8 @@ void	parse_commands(t_mini *mini)
 		}
 		i++;
 	}
-	l = 0;
-	mini->parsed[k]->cmd = (char **)ft_calloc((i - j + 1), sizeof(char *));
-	while (mini->input.words[j])
-	{
-		// printf("input.words: [%s]\n", mini->input.words[j]);
-		mini->parsed[k]->cmd[l] = mini->input.words[j];
-		j++;
-		l++;
-	}
+	store_last_words(mini, i, j, k);
+	manage_redir(mini);
 	i = -1;
 	while (mini->parsed[++i])
 	{
@@ -67,13 +58,16 @@ void	parse_commands(t_mini *mini)
 	}
 }
 
-// void	parse_commands(t_mini *mini)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (ft_strcmp(mini->input.words[i], "|"))
-// 	{
-// 		mini
-// 	}
-// }
+void	store_last_words(t_mini *mini, int i, int j, int k)
+{
+	int	l;
+	
+	l = 0;
+	mini->parsed[k]->cmd = (char **)ft_calloc((i - j + 1), sizeof(char *));
+	while (mini->input.words[j])
+	{
+		mini->parsed[k]->cmd[l] = mini->input.words[j];
+		j++;
+		l++;
+	}
+}

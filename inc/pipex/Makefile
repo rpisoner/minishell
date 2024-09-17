@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
+#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/01 10:25:16 by jolivare          #+#    #+#              #
-#    Updated: 2024/09/04 10:34:55 by rpisoner         ###   ########.fr        #
+#    Updated: 2024/09/16 16:26:03 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME = pipex.a
 BONUS_NAME = .bonus
 
 SOURCES = src/pipex.c src/make_childs.c src/path.c src/errors.c \

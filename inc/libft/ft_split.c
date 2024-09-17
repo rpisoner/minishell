@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 11:29:33 by jolivare          #+#    #+#             */
-/*   Updated: 2024/04/04 11:40:46 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:46:49 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	**ft_split(char const *s, char c)
 	result = ft_split(s,' ');
 	if (result == NULL)
 	{
-		printf("Memory alloction failed. \n");
+		printf("Memory allocation failed. \n");
 		return 1;
 	}
 	while (result[i])

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   single_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 15:58:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:13:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "../../inc/minishell.h"
 
 /**Si hay más de un comando hacemos como en el pipex, si no hardcodeada histórica*/
 
@@ -25,6 +25,7 @@ void	one_cmd(t_mini *mini)
 		mini->status = 1;
 		return ;
 	}
+	manage_single_redir(mini);
 	if (pid == 0)
 		execute_one_cmd(mini);
 	waitpid(pid, &status, 0);
@@ -33,6 +34,15 @@ void	one_cmd(t_mini *mini)
 
 void	execute_one_cmd(t_mini *mini)
 {
+	if(mini->input.outfile != -1)
+	{
+		if (dup2(mini->input.outfile, STDOUT_FILENO) < 0)
+		{
+			perror("Error en dup2");
+			return ;
+		}
+		close(mini->input.outfile);
+	}
 	if ((get_cmd_path(mini)))
 		exec_error();
 	execve(mini->pipex->path, mini->input.words, mini->envp);

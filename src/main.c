@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 10:53:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:01:34 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			if (!input)
 			{
-			//	free_stuff(&mini);
 				free(input);
 				clear_history();
 				exit(0);

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:35:27 by jolivare          #+#    #+#             */
-/*   Updated: 2024/06/17 10:23:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:22:30 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	write_here_doc(char *limiter, t_pipe *pipex)
 	complete_limiter = ft_strjoin(limiter, "\n");
 	while (1)
 	{
-		write (1, "here_doc>", 9);
 		text = get_next_line(0);
 		if (text == NULL)
 			break;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:29:28 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 23:29:46 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:27:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ char	*var_name(t_mini *mini, int i)
 	aux = i;
 	while (mini->input.raw_info[i] && (ft_isalnum(mini->input.raw_info[i])
 			|| mini->input.raw_info[i] == '_'))
-	{
 		i++;
-	}
 	var_name = ft_substr(mini->input.raw_info, aux, i - aux);
 	return (var_name);
 }
