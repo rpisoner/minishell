@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 16:03:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:15:27 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ void	manage_redir(t_mini *mini)
 			if (ft_strcmp(mini->parsed[i]->cmd[j], ">") == 0)
 			{
 				mini->parsed[i]->outfile = open(mini->parsed[i]->cmd[j + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-				printf("Redirection succesful: [%d]\n", mini->parsed[i]->outfile);
+				mini->parsed[i]->cmd[j] = NULL;
 			}
 			else if (ft_strcmp(mini->parsed[i]->cmd[j], ">>") == 0)
+			{
 				mini->parsed[i]->outfile = open(mini->parsed[i]->cmd[j + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
+				mini->parsed[i]->cmd[j] = NULL;
+			}
 			j++;
 		}
 		i++;
