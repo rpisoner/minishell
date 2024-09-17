@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/09/17 12:03:21 by jolivare         ###   ########.fr       */
+=======
+/*   Updated: 2024/09/17 11:51:47 by rpisoner         ###   ########.fr       */
+>>>>>>> 8618c2375bb8c2060c21e1660708cb9e95db2fe7
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +75,7 @@ typedef struct s_mini
 
 //DEV_UTILS FUNCTIONS
 void	print_stuff(char **stuff);
+void	print_parsed_cmd(t_mini *mini);
 
 //INITIALIZE FUNCTIONS
 void	initialize_data(t_mini *mini, char **envp);
@@ -89,16 +94,21 @@ char	*ft_strjoin_char(char *s1, char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
+<<<<<<< HEAD
 void	store_last_words(t_mini *mini, int i, int j, int k);
 void	manage_redir(t_mini *mini);
 void	manage_single_redir(t_mini *mini);
+=======
+>>>>>>> 8618c2375bb8c2060c21e1660708cb9e95db2fe7
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
 int		get_cmd_path(t_mini *mini);
+
 //EXECUTE FUNCTIONS
 void	execute_one_cmd(t_mini *mini);
 void	execute_commands(t_mini *mini);
+
 //EXPAND UTILS FUNCTIONS
 void	annex_content(t_mini *mini, char *var_content, int *j);
 char	*var_name(t_mini *mini, int i);

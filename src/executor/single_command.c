@@ -1,12 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+<<<<<<< HEAD:src/executor/single_command.c
 /*   single_command.c                                   :+:      :+:    :+:   */
+=======
+/*   one_command.c                                      :+:      :+:    :+:   */
+>>>>>>> 8618c2375bb8c2060c21e1660708cb9e95db2fe7:src/executor/one_command.c
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
+<<<<<<< HEAD:src/executor/single_command.c
 /*   Updated: 2024/09/17 12:13:06 by jolivare         ###   ########.fr       */
+=======
+/*   Updated: 2024/09/17 11:39:01 by rpisoner         ###   ########.fr       */
+>>>>>>> 8618c2375bb8c2060c21e1660708cb9e95db2fe7:src/executor/one_command.c
 /*                                                                            */
 /* ************************************************************************** */
 
