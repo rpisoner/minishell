@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/09/17 12:03:21 by jolivare         ###   ########.fr       */
-=======
-/*   Updated: 2024/09/17 11:51:47 by rpisoner         ###   ########.fr       */
->>>>>>> 8618c2375bb8c2060c21e1660708cb9e95db2fe7
+/*   Updated: 2024/09/17 14:09:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +37,6 @@ typedef struct s_input
 	char	*raw_info;
 	char	*current_word;
 	char	**words;
-	int		infile;
-	int		outfile;
 }	t_input;
 
 typedef struct s_parsed
@@ -94,12 +88,6 @@ char	*ft_strjoin_char(char *s1, char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
-<<<<<<< HEAD
-void	store_last_words(t_mini *mini, int i, int j, int k);
-void	manage_redir(t_mini *mini);
-void	manage_single_redir(t_mini *mini);
-=======
->>>>>>> 8618c2375bb8c2060c21e1660708cb9e95db2fe7
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
