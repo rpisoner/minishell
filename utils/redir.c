@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 12:19:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:03:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	manage_single_redir(t_mini *mini)
 		if (ft_strcmp(mini->input.words[i], ">") == 0)
 		{
 			mini->input.outfile = open(mini->input.words[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-			//free(mini->input.words[i]);
+			mini->input.words[i] = NULL;
 		}
 		else if (ft_strcmp(mini->input.words[i], ">>") == 0)
 		{
 			mini->input.outfile = open(mini->input.words[i + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
-			//free(mini->input.words[i]);
+			mini->input.words[i] = NULL;
 		}
 		i++;
 	}

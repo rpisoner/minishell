@@ -5,4 +5,4 @@ Las señales (Ctrl-D, Ctrl-C y Ctrl-\) (Hacer al final) (Ctrl-C imprime nueva l�
 Built-ins
 Gestionar echo $? (Esto son los estados de salida, es mirar bien con que salimos en exit)
 Ejecutar los comandos en el PATH (esto supongo que será como en el pipex)
-Hay que actualizar envp cuando se añada una nueva variable de entorno
+Hay que actualizar envp

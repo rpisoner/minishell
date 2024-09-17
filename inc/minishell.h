@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 14:12:40 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:02:22 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	*ft_strjoin_char(char *s1, char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
+void	manage_redir(t_mini *mini);
+void	manage_single_redir(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
