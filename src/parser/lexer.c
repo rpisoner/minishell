@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/13 10:41:48 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 12:06:54 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	numspli(char const *s, char c)
+static int	numspli(char const *s, char c)
 {
 	char	last;
 	int		i;
@@ -31,7 +31,7 @@ int	numspli(char const *s, char c)
 	return (cont);
 }
 
-void	create_word(t_mini *mini)
+static void	create_word(t_mini *mini)
 {
 	mini->input.current_word = (char *)malloc(sizeof(char)
 			* (ft_strlen(mini->input.raw_info) + 1));
@@ -49,7 +49,7 @@ void	store_word(t_mini *mini, int *j, int *k)
 	}
 }
 
-void	init_stuff(t_mini *mini, int *i, int *j, int *k)
+static void	init_stuff(t_mini *mini, int *i, int *j, int *k)
 {
 	*i = -1;
 	*j = 0;
