@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 14:09:10 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:12:40 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_input
 	char	*raw_info;
 	char	*current_word;
 	char	**words;
+	int		infile;
+	int		outfile;
 }	t_input;
 
 typedef struct s_parsed
