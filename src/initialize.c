@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 12:01:40 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:59:08 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	initialize_data(t_mini *mini, char **envp)
 	mini->path = search_path(envp);
 	mini->quoted = 0;
 	mini->ign_char = 0;
+	mini->here_doc = 0;
 	mini->t_quote = '\0';
 	mini->pipex = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:36:11 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/04 11:14:22 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:01:07 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_parsed(t_mini *mini)
 		while (mini->parsed[i]->cmd[j])
 		{
 			free(mini->parsed[i]->cmd[j]);
-			mini->parsed[i]->cmd[j] = NULL;
+			//mini->parsed[i]->cmd[j] = NULL;
 			j++;
 		}
 		free(mini->parsed[i]);

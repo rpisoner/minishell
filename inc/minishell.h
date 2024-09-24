@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 15:02:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:21:58 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_input
 	char	*raw_info;
 	char	*current_word;
 	char	**words;
+	int		aux_fd;
 	int		infile;
 	int		outfile;
 }	t_input;
@@ -46,8 +47,10 @@ typedef struct s_parsed
 	char	**cmd;
 	char	*path;
 	int		here_doc;
+	int		aux_fd;
 	int		infile;
 	int		outfile;
+	int		in_redir;
 	char	**infiles;
 	char	**outfiles;
 }	t_parsed;
@@ -62,6 +65,7 @@ typedef struct s_mini
 	t_parsed	**parsed;
 	char		**envp;
 	char		**path;
+	int			here_doc;
 	int			ign_char;
 	int			cmd_num;
 	int			quoted;
@@ -90,6 +94,13 @@ char	*ft_strjoin_char(char *s1, char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
+
+// REDIR FUNCTIONS
+void	check_here_doc(t_mini *mini);
+void	reassign_words(char **str);
+void	emulate_here_doc(t_mini *mini, char *limiter);
+void	manage_in_redir(t_mini *mini, int i);
+void	manage_out_redir(t_mini *mini, int i);
 void	manage_redir(t_mini *mini);
 void	manage_single_redir(t_mini *mini);
 

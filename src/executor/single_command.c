@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 17:35:50 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:40:21 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	one_cmd(t_mini *mini)
 	if (pid == 0)
 	{
 		manage_single_redir(mini);
-		execute_one_cmd(mini);	
+		execute_one_cmd(mini);
 	}
 	waitpid(pid, &status, 0);
 	mini->status = WEXITSTATUS(status);
@@ -36,7 +36,6 @@ void	one_cmd(t_mini *mini)
 
 void	execute_one_cmd(t_mini *mini)
 {
-	dprintf(2, "\t=> [%d] <=\n", mini->input.infile);
 	if (mini->input.infile != -1)
 	{
 		if (dup2(mini->input.infile, STDIN_FILENO) < 0)
@@ -54,9 +53,9 @@ void	execute_one_cmd(t_mini *mini)
 		}
 		close (mini->input.outfile);
 	}
-	while (1) ;
 	if ((get_cmd_path(mini)))
 		exec_error();
+	check_here_doc(mini);
 	execve(mini->pipex->path, mini->input.words, mini->envp);
 	exec_error();
 }
