@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/24 13:40:21 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 11:56:22 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,14 @@ void	execute_one_cmd(t_mini *mini)
 	if ((get_cmd_path(mini)))
 		exec_error();
 	check_here_doc(mini);
-	execve(mini->pipex->path, mini->input.words, mini->envp);
+	execve(mini->cmd_path, mini->input.words, mini->envp);
 	exec_error();
-}
-
-void	init_pipex(t_pipe **pipex)
-{
-	*pipex = (t_pipe *)malloc(sizeof(t_pipe));
-	if (*pipex == NULL)
-	{
-		perror("Error al asignar memoria");
-		exit(EXIT_FAILURE);
-	}
 }
 
 void	execute_commands(t_mini *mini)
 {
-	init_pipex(&(mini->pipex));
 	if (mini->cmd_num == 1)
 		one_cmd(mini);
-	free((mini->pipex));
+	else
+		multiple_commands(mini);
 }

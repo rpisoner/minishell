@@ -6,13 +6,13 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/17 14:11:09 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 11:02:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-static void	last_command(t_mini *mini, int i, int j, int k)
+static void	last_word(t_mini *mini, int i, int j, int k)
 {
 	int	l;
 
@@ -58,6 +58,6 @@ void	parse_commands(t_mini *mini)
 		}
 		i++;
 	}
-	last_command(mini, i, j, k);
+	last_word(mini, i, j, k);
 	print_parsed_cmd(mini);
 }

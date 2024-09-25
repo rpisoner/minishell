@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/24 13:21:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:03:21 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # include "libft/libft.h"
-# include "pipex/pipex_bonus.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -29,6 +28,11 @@
 # include <sys/stat.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# define WRITE 1
+# define READ 0
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 33
+# endif
 
 
 /**Estructura para el input */
@@ -61,16 +65,19 @@ typedef struct s_parsed
 typedef struct s_mini
 {
 	t_input		input;
-	t_pipe		*pipex;
 	t_parsed	**parsed;
+	int			old_pipe[2];
+	int			new_pipe[2];
 	char		**envp;
 	char		**path;
+	char		*cmd_path;
 	int			here_doc;
 	int			ign_char;
 	int			cmd_num;
 	int			quoted;
 	char		t_quote;
 	int			status;
+	int			last_child;
 }	t_mini;
 
 //DEV_UTILS FUNCTIONS
@@ -101,16 +108,25 @@ void	reassign_words(char **str);
 void	emulate_here_doc(t_mini *mini, char *limiter);
 void	manage_in_redir(t_mini *mini, int i);
 void	manage_out_redir(t_mini *mini, int i);
-void	manage_redir(t_mini *mini);
+void	manage_redir(t_mini *mini, int i);
 void	manage_single_redir(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
 int		get_cmd_path(t_mini *mini);
+int		get_values(t_mini *mini, int index);
 
 //EXECUTE FUNCTIONS
 void	execute_one_cmd(t_mini *mini);
+void	execute_fork(t_mini *mini);
+void	first_command(t_mini *mini);
+void	mid_commands(t_mini *mini, int i);
+void	last_command(t_mini *mini, int i);
+void	multiple_commands(t_mini *mini);
 void	execute_commands(t_mini *mini);
+
+// GET_NEXT_LINE
+char	*get_next_line(int fd);
 
 //EXPAND UTILS FUNCTIONS
 void	annex_content(t_mini *mini, char *var_content, int *j);
@@ -128,6 +144,7 @@ void	signals(void);
 void	exec_error(void);
 void	unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
+void	pipe_error(void);
 //FREE FUNCTIONS
 void	free_stuff(t_mini *mini);
 

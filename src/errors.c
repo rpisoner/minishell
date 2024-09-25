@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/09/05 21:37:18 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:00:34 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	exec_error(void)
 {
 	perror("Error");
 	exit(127);
+}
+
+void	pipe_error(void)
+{
+	printf("Pipe error\n");
+	exit(1);
 }
