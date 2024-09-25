@@ -6,7 +6,7 @@
 #    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/09/25 16:43:22 by rpisoner         ###   ########.fr        #
+#    Updated: 2024/09/25 17:57:25 by rpisoner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ NAME = minishell
 #########################################################################################
 
 SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/ft_strjoin_char.c \
-		src/parser/lexer.c src/path.c src/executor/single_command.c \
+		src/parser/lexer.c utils/path.c src/executor/single_command.c utils/get_next_line_bonus.c\
 		src/initialize.c src/errors.c src/parser/expander_utils.c src/parser/checkers.c src/signals.c \
-		utils/free_stuff.c utils/dev_utils.c src/parser/parser.c utils/redir.c inc/pipex/get_next_line_bonus.c \
-		utils/flag_utils.c  utils/redir_utils.c\
+		utils/free_stuff.c utils/dev_utils.c src/parser/parser.c utils/redir.c src/single_path.c \
+		utils/flag_utils.c  utils/redir_utils.c src/executor/childs.c  src/executor/forks.c src/executor/multiple_commands.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 LIBFT = inc/libft/libft.a
