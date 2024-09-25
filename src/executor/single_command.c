@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 11:56:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:21:01 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	execute_commands(t_mini *mini)
 {
 	if (mini->cmd_num == 1)
 		one_cmd(mini);
-	else
+	else if (mini->cmd_num > 1)
 		multiple_commands(mini);
+	else
+		return ;
 }

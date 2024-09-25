@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/24 12:32:00 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:25:37 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
+
+int	check_valid_input(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '\0')
+	{
+		free(str);
+		return (1);
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -25,13 +40,16 @@ int	main(int argc, char **argv, char **envp)
 		while (1)
 		{
 			input = readline("minishell>");
-			mini.input.raw_info = input;
+			// mini.cmd_num = 0;
 			if (!input)
 			{
 				free(input);
 				clear_history();
 				exit(0);
 			}
+			if (check_valid_input(input) == 1)
+				continue ;
+			mini.input.raw_info = input;
 			initialize_input(&mini);
 			lexer(&mini);
 			if (mini.cmd_num > 1)
