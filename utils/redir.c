@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 11:29:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:34:12 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	emulate_here_doc(t_mini *mini, char *limiter)
 		text = get_next_line(0);
 		if (text == NULL)
 			break;
-		if (!ft_strcmp(complete_limiter, text))
+		
+		if (ft_strcmp(complete_limiter, text) == 0)
 			break ;
 		write(mini->input.aux_fd, text, ft_strlen(text));
 		free (text);
@@ -75,14 +76,14 @@ void	manage_redir(t_mini *mini, int i)
 	int	j;
 
 	j = 0;
-	mini->parsed[i]->infile = -1;
-	mini->parsed[i]->outfile = -1;
+	initialize_in_out(mini);
 	while (mini->parsed[i]->cmd[j])
 	{
 		if (ft_strcmp(mini->input.words[i], "<") == 0)
 		{
-			mini->input.infile = open(mini->parsed[i]->cmd[j + 1], O_RDONLY);
+			mini->parsed[i]->infile = open(mini->parsed[i]->cmd[j + 1], O_RDONLY);
 			reassign_words(mini->parsed[i]->cmd);
+			print_stuff(mini->parsed[i]->cmd);
 		}
 		else if (ft_strcmp(mini->input.words[i], "<<") == 0)
 		{

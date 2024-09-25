@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:15:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/24 13:38:37 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:21:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ void	manage_in_redir(t_mini *mini, int i)
 {
 	if (ft_strcmp(mini->input.words[i], "<") == 0)
 	{
-			mini->input.infile = open(mini->input.words[i + 1], O_RDONLY);
-			reassign_words(mini->input.words);
-			print_stuff(mini->input.words);
+		mini->input.infile = open(mini->input.words[i + 1], O_RDONLY);
+		reassign_words(mini->input.words);
 	}
 	else if (ft_strcmp(mini->input.words[i], "<<") == 0)
 	{
 		mini->here_doc = 1;
 		emulate_here_doc(mini, mini->input.words[i + 1]);
 		reassign_words(mini->input.words);
-		print_stuff(mini->input.words);
 	}
 }
 

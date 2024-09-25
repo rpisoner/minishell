@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:06:56 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 11:31:53 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:45:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	close_father(t_mini *mini)
 		if (current_child == mini->last_child)
 			mini->status = WEXITSTATUS(status);
 	}
-	if (mini->here_doc == 1)
-		unlink("here_doc");
 }
 
 void	multiple_commands(t_mini *mini)
@@ -34,5 +32,4 @@ void	multiple_commands(t_mini *mini)
 	execute_fork(mini);
 	if (mini->last_child > 0)
 		close_father(mini);
-	exit (mini->status);
 }

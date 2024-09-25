@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:18:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 12:06:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:34:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	first_command(t_mini *mini)
 	}
 	if (get_values(mini, 0) == 1)
 		exec_error();
+	check_here_doc(mini);
 	execve(mini->cmd_path, mini->parsed[0]->cmd, mini->envp);
 	exec_error();
 }
@@ -61,6 +62,7 @@ void	mid_commands(t_mini *mini, int i)
 	}
 	if (get_values(mini, i) == 1)
 		exec_error();
+	check_here_doc(mini);
 	execve(mini->cmd_path, mini->parsed[i]->cmd, mini->envp);
 	exec_error();
 }
@@ -85,6 +87,7 @@ void	last_command(t_mini *mini, int i)
 	}
 	if (get_values(mini, i) == 1)
 		exec_error();
+	check_here_doc(mini);
 	execve(mini->cmd_path, mini->parsed[i]->cmd, mini->envp);
 	exec_error();
 }

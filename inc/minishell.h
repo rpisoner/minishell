@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 12:03:21 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:32:32 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	print_parsed_cmd(t_mini *mini);
 //INITIALIZE FUNCTIONS
 void	initialize_data(t_mini *mini, char **envp);
 void	initialize_input(t_mini *mini);
+void	initialize_in_out(t_mini *mini);
 
 //BUILT INS
 void	get_env(t_mini *mini);
