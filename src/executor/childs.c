@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:18:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 15:02:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:01:10 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	check_mid_redir(t_mini *mini, int i)
 		dup2(mini->old_pipe[READ], STDIN_FILENO);
 		close(mini->old_pipe[READ]);
 	}
-	if (mini->parsed[i]->infile != -1)
+	if (mini->parsed[i]->outfile != -1)
 	{
 		dup2(mini->parsed[i]->outfile, STDOUT_FILENO);
 		close(mini->parsed[i]->outfile);
@@ -83,13 +83,13 @@ void	last_command(t_mini *mini, int i)
 	{
 		dup2(mini->old_pipe[READ], STDIN_FILENO);
 		close(mini->old_pipe[READ]);
-		close(mini->old_pipe[WRITE]);
 	}
 	if (mini->parsed[i]->outfile != -1)
 	{
 		dup2(mini->parsed[i]->outfile, STDOUT_FILENO);
 		close(mini->parsed[i]->outfile);
 	}
+	close(mini->old_pipe[WRITE]);
 	if (get_values(mini, i) == 1)
 		exec_error();
 	check_here_doc(mini);

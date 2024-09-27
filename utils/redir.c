@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/26 10:19:40 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/27 10:42:45 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	manage_redir(t_mini *mini, int i)
 	int	j;
 
 	j = 0;
+	mini->parsed[i]->infile = -1;
+	mini->parsed[i]->outfile = -1;
 	while (mini->parsed[i]->cmd[j])
 	{
 		if (ft_strcmp(mini->parsed[i]->cmd[j], "<") == 0)
@@ -91,13 +93,14 @@ void	manage_redir(t_mini *mini, int i)
 		{
 			mini->parsed[i]->outfile = open(mini->parsed[i]->cmd[j + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 			mini->parsed[i]->cmd[j] = NULL;
+			mini->parsed[i]->cmd[j + 1] = NULL;
 		}
 		else if (ft_strcmp(mini->parsed[i]->cmd[j], ">>") == 0)
 		{
 			mini->parsed[i]->outfile = open(mini->parsed[i]->cmd[j + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 			mini->parsed[i]->cmd[j] = NULL;
+			mini->parsed[i]->cmd[j + 1] = NULL;
 		}
 		j++;
 	}
-	i++;
 }
