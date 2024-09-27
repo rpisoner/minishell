@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 16:25:37 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:38:00 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,29 @@ int	check_valid_input(char *str)
 	{
 		free(str);
 		return (1);
+	}
+	return (0);
+}
+
+int	check_blank_cmd(t_mini *mini)
+{
+	int	i;
+
+	i = -1;
+	while (mini->input.words[++i])
+	{
+		if ((ft_strcmp(mini->input.words[i], "|") == 0) &&
+			ft_strcmp(mini->input.words[i + 1], "|") == 0)
+		{
+			printf("Pipe syntax error\n");
+			return  (1);
+		}
+		else if (mini->input.words[0][0] == '|')
+		{
+			printf("Pipe syntax error\n");
+				return  (1);
+		}
+			
 	}
 	return (0);
 }
@@ -52,12 +75,14 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			initialize_input(&mini);
 			lexer(&mini);
+			if (input && *input)
+				add_history(input);
+			if (check_blank_cmd(&mini) == 1)
+				continue ;
 			if (mini.cmd_num > 1)
 				parse_commands(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
-			if (input && *input)
-				add_history(input);
 			if (input && ft_strcmp(input, "exit") == 0)
 			{
 				free(input);

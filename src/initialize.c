@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/26 10:10:10 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:20:46 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,6 @@ void	initialize_input(t_mini *mini)
 	i = -1;
 	while (++i < mini->cmd_num)
 		mini->parsed[i] = (t_parsed *)ft_calloc(1, sizeof(t_parsed));
-	initialize_in_out(mini);
-}
-
-void	initialize_in_out(t_mini *mini)
-{
-	int	i;
-
-	i = 0;
-	while (mini->parsed[i])
-	{
-		mini->parsed[i]->infile = -1;
-		mini->parsed[i]->outfile = -1;
-		i++;
-	}
 }
 
 void	initialize_data(t_mini *mini, char **envp)
