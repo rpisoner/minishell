@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 12:38:00 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:39:09 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	check_blank_cmd(t_mini *mini)
 			printf("Pipe syntax error\n");
 				return  (1);
 		}
-			
 	}
 	return (0);
 }
@@ -63,7 +62,6 @@ int	main(int argc, char **argv, char **envp)
 		while (1)
 		{
 			input = readline("minishell>");
-			// mini.cmd_num = 0;
 			if (!input)
 			{
 				free(input);
@@ -83,6 +81,8 @@ int	main(int argc, char **argv, char **envp)
 				parse_commands(&mini);
 			if (input && ft_strcmp(input, "env") == 0)
 				get_env(&mini);
+			// if (input && ft_strcmp(input, "pwd") == 0)
+			// 	do_pwd(&mini);
 			if (input && ft_strcmp(input, "exit") == 0)
 			{
 				free(input);

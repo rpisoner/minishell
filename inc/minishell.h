@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 13:32:32 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:25:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 #  define BUFFER_SIZE 33
 # endif
 
-
-/**Estructura para el input */
 typedef struct s_input
 {
 	char	*raw_info;
@@ -59,9 +57,6 @@ typedef struct s_parsed
 	char	**outfiles;
 }	t_parsed;
 
-/** Estructura para la ejecución*/
-// Se va a parecer mucho a la del pipex esta
-// Yo la haría la principal(donde linkamos las demás)
 typedef struct s_mini
 {
 	t_input		input;
@@ -87,10 +82,12 @@ void	print_parsed_cmd(t_mini *mini);
 //INITIALIZE FUNCTIONS
 void	initialize_data(t_mini *mini, char **envp);
 void	initialize_input(t_mini *mini);
-void	initialize_in_out(t_mini *mini);
 
 //BUILT INS
+int		is_built_in(t_mini *mini);
+void	execute_built_ins(t_mini *mini);
 void	get_env(t_mini *mini);
+void	do_pwd(t_mini *mini);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);

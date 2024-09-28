@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 17:57:47 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:49:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,12 @@ void	execute_one_cmd(t_mini *mini)
 void	execute_commands(t_mini *mini)
 {
 	if (mini->cmd_num == 1)
-		one_cmd(mini);
+	{
+		if (is_built_in(mini) == 0)
+			one_cmd(mini);
+		else if (is_built_in(mini) == 1)<
+			execute_built_ins(mini);
+	}
 	else if (mini->cmd_num > 1)
 		multiple_commands(mini);
 }
