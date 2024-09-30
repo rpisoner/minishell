@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 14:06:56 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/25 12:45:35 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:58:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	close_father(t_mini *mini)
 {
 	pid_t	current_child;
 	int		status;
+
 	close(mini->old_pipe[READ]);
 	while (1)
 	{

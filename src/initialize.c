@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 12:20:46 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:23:57 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	initialize_input(t_mini *mini)
 
 void	initialize_data(t_mini *mini, char **envp)
 {
-	mini->envp = envp;
+	mini->envp = modify_shlvl(copy_envp(envp));
 	mini->path = search_path(envp);
 	mini->quoted = 0;
 	mini->ign_char = 0;

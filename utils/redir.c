@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 10:42:45 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:55:02 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ void	emulate_here_doc(t_mini *mini, char *limiter)
 	{
 		text = get_next_line(0);
 		if (text == NULL)
-			break;
-		
+			break ;
 		if (ft_strcmp(complete_limiter, text) == 0)
 			break ;
 		write(mini->input.aux_fd, text, ft_strlen(text));
@@ -72,35 +71,12 @@ void	manage_redir(t_mini *mini, int i)
 {
 	int	j;
 
-	j = 0;
+	j = -1;
 	mini->parsed[i]->infile = -1;
 	mini->parsed[i]->outfile = -1;
-	while (mini->parsed[i]->cmd[j])
+	while (mini->parsed[i]->cmd[++j])
 	{
-		if (ft_strcmp(mini->parsed[i]->cmd[j], "<") == 0)
-		{
-			mini->parsed[i]->infile = open(mini->parsed[i]->cmd[j + 1], O_RDONLY);
-			reassign_words(mini->parsed[i]->cmd);
-		}
-		else if (ft_strcmp(mini->parsed[i]->cmd[j], "<<") == 0)
-		{
-			mini->here_doc = 1;
-			emulate_here_doc(mini, mini->parsed[i]->cmd[j + 1]);
-			mini->parsed[i]->infile = open("here_doc", O_RDONLY);
-			reassign_words(mini->parsed[i]->cmd);
-		}
-		if (ft_strcmp(mini->parsed[i]->cmd[j], ">") == 0)
-		{
-			mini->parsed[i]->outfile = open(mini->parsed[i]->cmd[j + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-			mini->parsed[i]->cmd[j] = NULL;
-			mini->parsed[i]->cmd[j + 1] = NULL;
-		}
-		else if (ft_strcmp(mini->parsed[i]->cmd[j], ">>") == 0)
-		{
-			mini->parsed[i]->outfile = open(mini->parsed[i]->cmd[j + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
-			mini->parsed[i]->cmd[j] = NULL;
-			mini->parsed[i]->cmd[j + 1] = NULL;
-		}
-		j++;
+		manage_pipe_in(mini, i, j);
+		manage_pipe_out(mini, i, j);
 	}
 }

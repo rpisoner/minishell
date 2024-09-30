@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:18:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 14:22:04 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:59:15 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,3 @@ void	last_command(t_mini *mini, int i)
 	execve(mini->cmd_path, mini->parsed[i]->cmd, mini->envp);
 	exec_error();
 }
-

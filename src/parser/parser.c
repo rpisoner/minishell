@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 15:46:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:00:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	last_word(t_mini *mini, int i, int j, int k)
 
 static void	init_stuff(int *i, int *j, int *k, int *l)
 {
-	*i = 0;	/* Iterar en input.words */
-	*j = 0;	/* Posicion del comando a guardarse  */
-	*k = 0;	/* Posicion del argumento dentro del comando */
-	*l = 0;	/* Posicion del ultimo argumento del ultimo comando  */
+	*i = 0;
+	*j = 0;
+	*k = 0;
+	*l = 0;
 }
 
 void	parse_commands(t_mini *mini)

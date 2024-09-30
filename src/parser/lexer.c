@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 15:46:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:00:28 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	init_stuff(t_mini *mini, int *i, int *j, int *k)
 	*k = 0;
 	mini->input.current_word = NULL;
 	mini->input.words = (char **)malloc(sizeof(char *)
-			* ((numspli(mini->input.raw_info, ' ') + (mini->cmd_num * 2)))); //TAMAÑO INCORRECTO PARA ESTO
+			* ((numspli(mini->input.raw_info, ' ') + (mini->cmd_num * 2))));
 	if (!mini->input.words)
 		malloc_error();
 }

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 16:25:52 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:11:33 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,16 @@ void	print_parsed_cmd(t_mini *mini);
 //INITIALIZE FUNCTIONS
 void	initialize_data(t_mini *mini, char **envp);
 void	initialize_input(t_mini *mini);
+char	**copy_envp(char **envp);
+char	**modify_shlvl(char **envp);
+char	**insert_into_env(char **envp, char *insert);
 
 //BUILT INS
 int		is_built_in(t_mini *mini);
 void	execute_built_ins(t_mini *mini);
 void	get_env(t_mini *mini);
 void	do_pwd(t_mini *mini);
+void	do_exit(t_mini *mini);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);
@@ -108,6 +112,8 @@ void	manage_in_redir(t_mini *mini, int i);
 void	manage_out_redir(t_mini *mini, int i);
 void	manage_redir(t_mini *mini, int i);
 void	manage_single_redir(t_mini *mini);
+void	manage_pipe_out(t_mini *mini, int i, int j);
+void	manage_pipe_in(t_mini *mini, int i, int j);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);

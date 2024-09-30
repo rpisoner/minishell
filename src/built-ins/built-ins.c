@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:59:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/27 16:21:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:11:52 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	is_built_in(t_mini *mini)
 	}
 	return (0);
 }
+
 void	execute_built_ins(t_mini *mini)
 {
 	int	i;
@@ -48,7 +49,7 @@ void	execute_built_ins(t_mini *mini)
 		else if (ft_strcmp(mini->input.words[i], "cd") == 0)
 			return ;
 		else if (ft_strcmp(mini->input.words[i], "exit") == 0)
-			return ;
+			do_exit(mini);
 		else if (ft_strcmp(mini->input.words[i], "export") == 0)
 			return ;
 		else if (ft_strcmp(mini->input.words[i], "unset") == 0)

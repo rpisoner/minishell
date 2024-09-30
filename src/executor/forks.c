@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:32:26 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/26 18:35:45 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:58:55 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	mid_forks(t_mini *mini)
 {
 	pid_t	middle_child;
 	int		i;
-	
+
 	i = 0;
 	close(mini->old_pipe[WRITE]);
 	while (++i < mini->cmd_num - 1)
@@ -56,7 +56,7 @@ static void	mid_forks(t_mini *mini)
 static void	last_fork(t_mini *mini)
 {
 	pid_t	last_child;
-	
+
 	last_child = fork();
 	mini->last_child = last_child;
 	if (last_child == -1)
