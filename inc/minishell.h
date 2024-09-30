@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 14:11:33 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:12:53 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	execute_built_ins(t_mini *mini);
 void	get_env(t_mini *mini);
 void	do_pwd(t_mini *mini);
 void	do_exit(t_mini *mini);
+void	do_unset(t_mini *mini);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);

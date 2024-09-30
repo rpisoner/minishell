@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:23:57 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:54:21 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	initialize_input(t_mini *mini)
 			mini->cmd_num += 1;
 		i++;
 	}
-	mini->parsed = (t_parsed **)ft_calloc((mini->cmd_num + 1), sizeof(t_parsed *));
+	mini->parsed = (t_parsed **)ft_calloc((mini->cmd_num + 1),
+			sizeof(t_parsed *));
 	i = -1;
 	while (++i < mini->cmd_num)
 		mini->parsed[i] = (t_parsed *)ft_calloc(1, sizeof(t_parsed));
