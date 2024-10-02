@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/02 13:19:31 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:53:35 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	main(int argc, char **argv, char **envp)
 				clear_history();
 				exit(0);
 			}
-			//execute_commands(&mini);
+			execute_commands(&mini);
 			free (input);
 			free_stuff(&mini);
 		}
