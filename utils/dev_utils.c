@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dev_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 10:29:46 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/09/30 17:54:43 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:12:22 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,30 @@ void	print_parsed_cmd(t_mini *mini)
 	while (mini->parsed[++i])
 	{
 		j = 0;
-		while (mini->parsed[i]->cmd[j])
+		while (mini->parsed[i]->cmd[j] != NULL)
 		{
 			printf("Parsed[%d]->", i);
-			printf("cmd[%d]: [%s]\n", j, mini->parsed[i]->cmd[j]);
+			if (mini->parsed[i]->cmd[j] != NULL)
+				printf("cmd[%d]: [%s]\n", j, mini->parsed[i]->cmd[j]);
 			j++;
 		}
+		printf("Parsed[%d]->", i);
+		printf("cmd[%d]: [(null)]\n", j);
 		printf("\n");
 	}
+}
+
+void	write_word(char *word, int init, int len)
+{
+	int	i;
+
+	i = 0;
+	write(1, "Palabra [", 9);
+	while (i < len)
+	{
+		write(1, &word[init], 1);
+		i++;
+		init++;
+	}
+	write(1, "], ", 3);
 }

@@ -3,38 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 13:00:28 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:51:36 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-static int	numspli(char const *s, char c)
-{
-	char	last;
-	int		i;
-	char	cont;
-
-	last = c;
-	i = 0;
-	cont = 0;
-	while (s[i])
-	{
-		if (last == c && s[i] != c)
-			cont++;
-		last = s[i];
-		i++;
-	}
-	return (cont);
-}
-
-static void	create_word(t_mini *mini)
+static void	create_word(t_mini *mini, int i)
 {
 	mini->input.current_word = (char *)malloc(sizeof(char)
-			* (ft_strlen(mini->input.raw_info) + 1));
+			* (next_word_size(mini, i) + 1));
 	if (!mini->input.current_word)
 		malloc_error();
 }
@@ -44,7 +25,8 @@ void	store_word(t_mini *mini, int *j, int *k)
 	if (mini->input.current_word && *j > 0)
 	{
 		mini->input.current_word[*j] = '\0';
-		mini->input.words[(*k)++] = mini->input.current_word;
+		mini->input.words[(*k)++] = ft_strdup(mini->input.current_word);
+		free(mini->input.current_word);
 		*j = 0;
 	}
 }
@@ -56,7 +38,7 @@ static void	init_stuff(t_mini *mini, int *i, int *j, int *k)
 	*k = 0;
 	mini->input.current_word = NULL;
 	mini->input.words = (char **)malloc(sizeof(char *)
-			* ((numspli(mini->input.raw_info, ' ') + (mini->cmd_num * 2))));
+			* (split_counter(mini) + 1));
 	if (!mini->input.words)
 		malloc_error();
 }
@@ -75,8 +57,10 @@ void	lexer(t_mini *mini)
 		else
 		{
 			checkers(mini, &i, &j, &k);
-			if (j == 0 && mini->input.raw_info[i] != '|')
-				create_word(mini);
+			if (j == 0 && mini->input.raw_info[i] != '|'
+				&& mini->input.raw_info[i] != '>'
+				&& mini->input.raw_info[i] != '<')
+				create_word(mini, i);
 			if (mini->ign_char == 0)
 				mini->input.current_word[j++] = mini->input.raw_info[i];
 			ign_char_setter(mini);
@@ -85,5 +69,5 @@ void	lexer(t_mini *mini)
 	store_word(mini, &j, &k);
 	mini->input.words[k] = NULL;
 	unclosed_quote_check(mini);
-	// print_stuff(mini->input.words);
+	print_stuff(mini->input.words);
 }

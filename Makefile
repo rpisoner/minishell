@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
+#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/09/30 16:13:16 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/02 16:07:29 by rpisoner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/ft_strjoin_cha
 		utils/free_stuff.c utils/dev_utils.c src/parser/parser.c utils/redir.c src/single_path.c \
 		utils/flag_utils.c  utils/redir_utils.c src/executor/childs.c  src/executor/forks.c src/executor/multiple_commands.c \
 		src/built-ins/pwd.c  src/built-ins/built-ins.c utils/get_env_utils.c src/built-ins/exit.c  src/built-ins/unset.c \
+		src/parser/redirection_utils.c src/parser/counter_utils.c  src/parser/counter.c  utils/next_word_size.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 LIBFT = inc/libft/libft.a

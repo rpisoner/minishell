@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 17:54:21 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:55:29 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,21 @@ void	initialize_input(t_mini *mini)
 	mini->cmd_num = 1;
 	while (mini->input.raw_info[i])
 	{
-		if (mini->input.raw_info[i] == '|')
+		quote_check(mini, i);
+		if (mini->input.raw_info[i] == '|' && mini->quoted == 0)
 			mini->cmd_num += 1;
 		i++;
 	}
-	mini->parsed = (t_parsed **)ft_calloc((mini->cmd_num + 1),
-			sizeof(t_parsed *));
-	i = -1;
-	while (++i < mini->cmd_num)
-		mini->parsed[i] = (t_parsed *)ft_calloc(1, sizeof(t_parsed));
+	mini->quoted = 0;
+	if (mini->cmd_num != 1)
+	{
+		mini->parsed = (t_parsed **)ft_calloc((mini->cmd_num + 1),
+				sizeof(t_parsed *));
+		i = -1;
+		while (++i < mini->cmd_num)
+			mini->parsed[i] = (t_parsed *)ft_calloc(1, sizeof(t_parsed));
+		mini->parsed[i] = NULL;
+	}
 }
 
 void	initialize_data(t_mini *mini, char **envp)

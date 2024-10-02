@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 13:00:52 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:38:42 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ static void	last_word(t_mini *mini, int i, int j, int k)
 
 	l = 0;
 	mini->parsed[k]->cmd = (char **)ft_calloc((i - j + 1), sizeof(char *));
+	if (!mini->parsed[k]->cmd)
+		malloc_error();
 	while (mini->input.words[j])
 	{
 		mini->parsed[k]->cmd[l] = mini->input.words[j];
 		j++;
 		l++;
 	}
+	mini->parsed[k]->cmd[l] = NULL;
 }
 
 static void	init_stuff(int *i, int *j, int *k, int *l)
@@ -53,6 +56,7 @@ void	parse_commands(t_mini *mini)
 				malloc_error();
 			while (i != j)
 				mini->parsed[k]->cmd[l++] = mini->input.words[j++];
+			mini->parsed[k]->cmd[l] = NULL;
 			j = i + 1;
 			k++;
 		}

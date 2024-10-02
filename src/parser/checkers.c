@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:24:25 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/09/05 21:26:01 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:56:04 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,33 @@ void	pipe_check(t_mini *mini, int *i, int *j, int *k)
 	}
 }
 
+void	redir_check(t_mini *mini, int *i, int *j, int *k)
+{
+	char	*token;
+	int		redir_symbols;
+
+	redir_symbols = 0;
+	if ((mini->input.raw_info[*i] == '>' || mini->input.raw_info[*i] == '<')
+		&& mini->quoted == 0)
+	{
+		store_word(mini, j, k);
+		while (mini->input.raw_info[*i]
+			&& (mini->input.raw_info[*i] == '>'
+				|| mini->input.raw_info[*i] == '<'))
+		{
+			(*i)++;
+			redir_symbols++;
+		}
+		token = (char *)malloc((redir_symbols + 1) * sizeof(char));
+		if (!token)
+			malloc_error();
+		copy_redirs(mini, token, *i - redir_symbols);
+		mini->input.words[(*k)++] = token;
+		(*i)--;
+		mini->ign_char = 1;
+	}
+}
+
 void	expander_check(t_mini *mini, int *i, int *j)
 {
 	char	*variable_name;
@@ -70,5 +97,6 @@ void	checkers(t_mini *mini, int *i, int *j, int *k)
 {
 	quote_check(mini, *i);
 	pipe_check(mini, i, j, k);
+	redir_check(mini, i, j, k);
 	expander_check(mini, i, j);
 }

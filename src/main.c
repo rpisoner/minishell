@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 11:50:07 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/02 13:19:31 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_valid_input(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] == ' ' || str[i] == '\t')
+	while (str[i] == ' ' || str[i] == '\t')
 		i++;
 	if (str[i] == '\0')
 	{
@@ -38,12 +38,12 @@ int	check_blank_cmd(t_mini *mini)
 			ft_strcmp(mini->input.words[i + 1], "|") == 0)
 		{
 			printf("Pipe syntax error\n");
-			return  (1);
+			return (1);
 		}
 		else if (mini->input.words[0][0] == '|')
 		{
 			printf("Pipe syntax error\n");
-				return  (1);
+			return (1);
 		}
 	}
 	return (0);
@@ -86,7 +86,7 @@ int	main(int argc, char **argv, char **envp)
 				clear_history();
 				exit(0);
 			}
-			execute_commands(&mini);
+			//execute_commands(&mini);
 			free (input);
 			free_stuff(&mini);
 		}
