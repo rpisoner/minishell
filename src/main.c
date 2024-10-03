@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/02 17:53:35 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/02 23:33:55 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,24 @@ int	check_blank_cmd(t_mini *mini)
 	int	i;
 
 	i = -1;
-	while (mini->input.words[++i])
+	if (mini->cmd_num > 1)
 	{
-		if ((ft_strcmp(mini->input.words[i], "|") == 0) &&
-			ft_strcmp(mini->input.words[i + 1], "|") == 0)
+		while (mini->input.words[++i])
 		{
-			printf("Pipe syntax error\n");
-			return (1);
-		}
-		else if (mini->input.words[0][0] == '|')
-		{
-			printf("Pipe syntax error\n");
-			return (1);
+			if (((ft_strcmp(mini->input.words[i], "|") == 0) &&
+				ft_strcmp(mini->input.words[i + 1], "|") == 0) || 
+				((ft_strcmp(mini->input.words[i + 1], "|") == 0) && 
+				mini->input.words[i + 2] == NULL))
+			{
+				free_stuff(mini);
+				printf("Pipe syntax error\n");
+				return (1);
+			}
+			else if (mini->input.words[0][0] == '|')
+			{
+				printf("Pipe syntax error\n");
+				return (1);
+			}
 		}
 	}
 	return (0);

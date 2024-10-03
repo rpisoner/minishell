@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built-ins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:59:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 16:12:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/03 12:03:47 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	execute_built_ins(t_mini *mini)
 		else if (ft_strcmp(mini->input.words[i], "pwd") == 0)
 			do_pwd(mini);
 		else if (ft_strcmp(mini->input.words[i], "cd") == 0)
-			return ;
+			do_cd(mini, i);
 		else if (ft_strcmp(mini->input.words[i], "exit") == 0)
 			do_exit(mini);
 		else if (ft_strcmp(mini->input.words[i], "export") == 0)

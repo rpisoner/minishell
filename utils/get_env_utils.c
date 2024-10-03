@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:44:18 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:48:01 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:47:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**copy_envp(char **envp)
 	return (env_cpy);
 }
 
-int	search_shl_lvl(char **envp, char *var)
+int	search_on_env(char **envp, char *var)
 {
 	int		i;
 	char	*complete;
@@ -73,7 +73,6 @@ int	search_shl_lvl(char **envp, char *var)
 		}
 		i++;
 	}
-	printf("hola\n");
 	free(complete);
 	return (-1);
 }
@@ -85,7 +84,7 @@ char	**modify_shlvl(char **envp)
 	char	*aux;
 	char	*shlvl;
 
-	i = search_shl_lvl(envp, "SHLVL");
+	i = search_on_env(envp, "SHLVL");
 	if (i == -1)
 	{
 		shlvl = ft_strjoin("SHLVL=", "1");

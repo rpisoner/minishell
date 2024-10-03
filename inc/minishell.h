@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/02 16:14:40 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/03 12:03:25 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ void	get_env(t_mini *mini);
 void	do_pwd(t_mini *mini);
 void	do_exit(t_mini *mini);
 void	do_unset(t_mini *mini);
+void	do_cd(t_mini *mini, int i);
+
+//BUILT-INS UTILS
+
+int	search_on_env(char **envp, char *var);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);
@@ -111,8 +116,8 @@ void	squotes(char *comando, int len, int *i, int *memoria_total);
 void	redirections(char *comando, int len, int *i, int *memoria_total);
 void	symbols(int *i, int *memoria_total);
 void	advancer(char *comando, int len, int *i, int *memoria_total);
-int		es_redireccion(char c);
-int		es_simbolo(char c);
+int		is_redirection(char c);
+int		is_symbol(char c);
 
 //PARSER FUNCTIONS
 void	parse_commands(t_mini *mini);
