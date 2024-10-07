@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/04 18:36:57 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:11:14 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,50 @@ void	do_cd(t_mini *mini, int i)
 	char	*target;
 	char	*new_dir;
 	char	*old_dir;
+	int		j;
 
+	old_dir = getcwd(NULL, 0);
+	if (!old_dir)
+	{
+		j = search_on_env(mini->envp, "HOME");
+		if (j >= 0)
+		{
+			target = ft_strdup(&mini->envp[j][5]);
+			if (chdir(target) < 0)
+			{
+				printf("Minishell: cd %s: no such file or directory\n", target);
+				mini->status = 1;
+				free(target);
+				return ;
+			}
+			mini->status = 0;
+			new_dir = getcwd(NULL, 0);
+			update_env(mini, target, new_dir);
+			free(target);
+			free(new_dir);
+			return ;
+		}
+	}
 	target = get_target(mini, i);
 	if (!target)
+	{
+		free(old_dir);
 		return ;
-	old_dir = getcwd(NULL, 0);
+	}
 	if (chdir(target) < 0)
+	{
+		printf("Minishell: cd %s: no such file or directory\n", target);
+		mini->status = 1;
+		free(target);
+		free (old_dir);
 		return ;
+	}
 	mini->status = 0;
 	new_dir = getcwd(NULL, 0);
 	if (ft_strcmp(old_dir, new_dir) != 0)
 		update_env(mini, old_dir, new_dir);
+	free(old_dir);
+	free(new_dir);
+	free(target);
 	return ;
 }

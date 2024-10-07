@@ -2,4 +2,3 @@ Cosas que hacer(Subject):
 
 Las señales (Ctrl-D, Ctrl-C y Ctrl-\) (Hacer al final) (Ctrl-C imprime nueva línea no termina la ejecución)
 Built-ins
-Gestionar echo $? (Esto son los estados de salida, es mirar bien con que salimos en exit)
