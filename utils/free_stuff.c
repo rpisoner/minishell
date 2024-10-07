@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:36:11 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/02 23:26:15 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:03:22 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ void	free_input_words(t_mini *mini)
 		i++;
 	}
 	free(mini->input.words);
+}
+
+void	free_env(t_mini *mini)
+{
+	int	i;
+
+	i = 0;
+	while (mini->envp[i])
+	{
+		free(mini->envp[i]);
+		i++;
+	}
+	free(mini->envp);
 }
 
 void	free_stuff(t_mini *mini)

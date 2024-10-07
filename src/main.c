@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/02 23:33:55 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/04 18:51:40 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,6 @@ int	check_valid_input(char *str)
 	{
 		free(str);
 		return (1);
-	}
-	return (0);
-}
-
-int	check_blank_cmd(t_mini *mini)
-{
-	int	i;
-
-	i = -1;
-	if (mini->cmd_num > 1)
-	{
-		while (mini->input.words[++i])
-		{
-			if (((ft_strcmp(mini->input.words[i], "|") == 0) &&
-				ft_strcmp(mini->input.words[i + 1], "|") == 0) || 
-				((ft_strcmp(mini->input.words[i + 1], "|") == 0) && 
-				mini->input.words[i + 2] == NULL))
-			{
-				free_stuff(mini);
-				printf("Pipe syntax error\n");
-				return (1);
-			}
-			else if (mini->input.words[0][0] == '|')
-			{
-				printf("Pipe syntax error\n");
-				return (1);
-			}
-		}
 	}
 	return (0);
 }
@@ -81,17 +53,8 @@ int	main(int argc, char **argv, char **envp)
 			lexer(&mini);
 			if (input && *input)
 				add_history(input);
-			if (check_blank_cmd(&mini) == 1)
-				continue ;
 			if (mini.cmd_num > 1)
 				parse_commands(&mini);
-			if (input && ft_strcmp(input, "exit") == 0)
-			{
-				free(input);
-				free_stuff(&mini);
-				clear_history();
-				exit(0);
-			}
 			execute_commands(&mini);
 			free (input);
 			free_stuff(&mini);

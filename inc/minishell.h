@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/03 12:03:25 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:14:54 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_mini
 	char		*cmd_path;
 	int			here_doc;
 	int			ign_char;
+	int			meta_char;
 	int			cmd_num;
 	int			quoted;
 	char		t_quote;
@@ -95,6 +96,8 @@ void	do_pwd(t_mini *mini);
 void	do_exit(t_mini *mini);
 void	do_unset(t_mini *mini);
 void	do_cd(t_mini *mini, int i);
+void	do_echo(t_mini *mini, int i);
+void	do_export(t_mini *mini, int i);
 
 //BUILT-INS UTILS
 

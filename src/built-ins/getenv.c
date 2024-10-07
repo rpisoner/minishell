@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:42 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:46:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:43:54 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	get_env(t_mini *mini)
 {
 	int	i;
 
-	i = 0;
-	while (mini->envp[i])
-		printf("%s\n", mini->envp[i++]);
+	i = -1;
+	while (mini->envp[++i])
+		printf("%s\n", mini->envp[i]);
 }

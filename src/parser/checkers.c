@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:24:25 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/02 12:56:04 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:25:03 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	expander_check(t_mini *mini, int *i, int *j)
 		|| (mini->input.raw_info[*i] == '$' && mini->quoted
 			&& mini->t_quote == '\"'))
 	{
+		mini->meta_char = 1;
 		variable_name = var_name(mini, *(i));
 		var_content = search_var(mini, variable_name);
 		(*i) += ft_strlen(variable_name);
