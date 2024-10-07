@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 12:14:54 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:36:02 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ typedef struct s_mini
 	char		*cmd_path;
 	int			here_doc;
 	int			ign_char;
+	int			line;
 	int			meta_char;
+	int			unclosed_quote;
 	int			cmd_num;
 	int			quoted;
 	char		t_quote;

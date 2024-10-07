@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 11:33:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:36:13 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	initialize_data(t_mini *mini, char **envp)
 	mini->quoted = 0;
 	mini->ign_char = 0;
 	mini->status = 0;
+	mini->line = 0;
+	mini->unclosed_quote = 0;
 	mini->here_doc = 0;
 	mini->meta_char = 0;
 	mini->t_quote = '\0';

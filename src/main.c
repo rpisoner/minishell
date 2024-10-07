@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/04 18:51:40 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:37:51 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			initialize_input(&mini);
 			lexer(&mini);
+			if (mini.unclosed_quote)
+			{
+				mini.unclosed_quote = 0;
+				free (input);
+				free_stuff(&mini);
+				continue ;
+			}
 			if (input && *input)
 				add_history(input);
 			if (mini.cmd_num > 1)

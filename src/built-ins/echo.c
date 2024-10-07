@@ -6,49 +6,60 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:46:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 13:04:53 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:32:28 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-static void	print_next_chars(t_mini *mini, int i, int j)
+static int	manage_echo_status(t_mini *mini, int i)
 {
-	while (mini->input.words[i][j])
+	if (mini->meta_char && ft_strcmp(mini->input.words[i], "?") == 0)
 	{
-		printf("%c", mini->input.words[i][j]);
-		j++;
+		printf("%d", mini->status);
+		if (mini->input.words[i + 1] != NULL)
+		{
+			printf(" ");
+			return (1);
+		}
+		else if (!mini->input.words[i + 1])
+		{
+			printf("\n");
+			return (0);
+		}
 	}
-	printf("\n");
+	return (0);
 }
 
-// void	manage_n_flag(t_mini *mini, int i)
-// {
-	
-// }
+static int	manage_echo_new_line(t_mini *mini, int i)
+{
+	if (ft_strcmp(mini->input.words[i], "-n") == 0)
+	{
+		mini->line = 1;
+		if (mini->input.words[i + 1] != NULL)
+			return (1);
+		return (0);
+	}
+	return (0);
+}
 
 void	do_echo(t_mini *mini, int i)
 {
-	int	j;
-
-	j = 0;
-	if (mini->meta_char == 1 && mini->input.words[i + 1][0] == '?')
+	i += 1;
+	while (mini->input.words[i])
 	{
-		printf("%d", mini->status);
-		if (mini->input.words[i][j + 1])
-			print_next_chars(mini, i + 1, j + 1);
-		return ;
+		if (manage_echo_new_line(mini, i))
+			i++;
+		if (manage_echo_status(mini, i))
+			i++;
+		if (mini->input.words[i + 1] == NULL)
+			break ;
+		printf("%s ", mini->input.words[i]);
+		i++;
 	}
-	else
-	{
-		j = 5;
-		while (mini->input.raw_info[j])
-		{
-			printf("%c", mini->input.raw_info[j]);
-			j++;
-		}
+	printf("%s", mini->input.words[i]);
+	if (!mini->line)
 		printf("\n");
-	}
-	mini->meta_char = 0;
+	mini->line = 0;
 }
 
