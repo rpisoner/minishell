@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:46:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 19:13:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 19:21:24 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static int	manage_echo_new_line(t_mini *mini, int i)
 			return (1);
 		return (2);
 	}
-	else if (ft_strcmp(mini->input.words[i + 1], "-n") == 0)
-		return (2);
 	return (0);
 }
 
