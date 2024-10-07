@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:46:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 16:42:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/07 19:13:24 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	do_echo(t_mini *mini, int i)
 	while (mini->input.words[i])
 	{
 		if (manage_echo_new_line(mini, i) == 1)
-			i++;
+		{
+			while (ft_strcmp(mini->input.words[i], "-n") == 0) 
+				i++;
+		}
 		else if (manage_echo_new_line(mini, i) == 2)
 			return ;
 		if (manage_echo_status(mini, i) == 1)
