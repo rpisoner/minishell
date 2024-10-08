@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/04 18:54:00 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:10:57 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,34 @@ static void	last_word(t_mini *mini, int i, int j, int k)
 	}
 	mini->parsed[k]->cmd[l] = NULL;
 }
+
+/*
+void	quote_parsing(t_mini *mini, int i)
+{
+	char	*word;
+	char	*aux_word;
+	int		j;
+	int		aux;
+
+	j = 0;
+	if (!word)
+		malloc_error();
+	while (mini->input.words[i][j])
+	{
+		while (mini->input.words[i][j] != '\"'
+				&& mini->input.words[i][j] != '\'')
+			j++;
+		mini->t_quote = mini->input.words[i][j];
+		if (j != 0)
+			word = ft_substr(mini->input.words[i], 0, j);
+		aux = j;
+		ft_memcpy(word, mini->input.words[i][j], j);
+		while (mini->input.words[i][j] != quote)
+			j++;
+		
+	}
+	
+}*/
 
 static void	init_stuff(int *i, int *j, int *k, int *l)
 {
@@ -60,6 +88,9 @@ void	parse_commands(t_mini *mini)
 			j = i + 1;
 			k++;
 		}
+	//	else if (ft_strchr(mini->input.words[i], "\"") || 
+	//		ft_strchr(mini->input.words[i], "\'"))
+	//		quote_parsing(mini, i);
 		i++;
 	}
 	last_word(mini, i, j, k);

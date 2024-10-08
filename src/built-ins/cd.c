@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 16:11:14 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:28:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*get_target(t_mini *mini, int i)
 	int		j;
 	char	*path;
 	
-	if (ft_strcmp(mini->input.words[i + 1], "~") != 0 && mini->input.words[i + 1])
+	if (mini->input.words[i + 1] && ft_strcmp(mini->input.words[i + 1], "~") != 0)
 	{
 		if (ft_strcmp(mini->input.words[i + 1], "-") == 0)
 			return (get_prev_path(mini));
@@ -80,35 +80,41 @@ char	*get_target(t_mini *mini, int i)
 	return (path);
 }
 
+char	*check_current_dir(t_mini *mini)
+{
+	char	*old_dir;
+	int		i;
+
+	old_dir = getcwd(NULL, 0);
+	if (!old_dir)
+	{
+		i = search_on_env(mini->envp, "HOME");
+		if (i >= 0)
+		{
+			old_dir = ft_strdup((&mini->envp[i][5]));	
+			if (chdir(old_dir) < 0)
+			{
+				printf("Minishell: cd %s: no such file or directory\n", old_dir);
+				free(old_dir);
+				return (NULL);
+			}
+			return (old_dir);
+		}
+		printf("Minishell: cd: HOME not set\n");
+		return (NULL);
+	}
+	return (old_dir);
+}
+
 void	do_cd(t_mini *mini, int i)
 {
 	char	*target;
 	char	*new_dir;
 	char	*old_dir;
-	int		j;
 
-	old_dir = getcwd(NULL, 0);
+	old_dir = check_current_dir(mini);
 	if (!old_dir)
-	{
-		j = search_on_env(mini->envp, "HOME");
-		if (j >= 0)
-		{
-			target = ft_strdup(&mini->envp[j][5]);
-			if (chdir(target) < 0)
-			{
-				printf("Minishell: cd %s: no such file or directory\n", target);
-				mini->status = 1;
-				free(target);
-				return ;
-			}
-			mini->status = 0;
-			new_dir = getcwd(NULL, 0);
-			update_env(mini, target, new_dir);
-			free(target);
-			free(new_dir);
-			return ;
-		}
-	}
+		return ;
 	target = get_target(mini, i);
 	if (!target)
 	{
@@ -131,4 +137,3 @@ void	do_cd(t_mini *mini, int i)
 	free(new_dir);
 	free(target);
 	return ;
-}

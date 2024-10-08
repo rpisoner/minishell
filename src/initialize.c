@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 16:26:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/08 10:58:37 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	initialize_input(t_mini *mini)
 	int	i;
 
 	i = 0;
-	mini->cmd_num = 1;
+	mini->cmd_num = 1; 
 	while (mini->input.raw_info[i])
 	{
 		quote_check(mini, i);
