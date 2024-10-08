@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 15:39:15 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:53:15 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void	lexer(t_mini *mini)
 	store_word(mini, &j, &k);
 	mini->input.words[k] = NULL;
 	unclosed_quote_check(mini);
-	// print_stuff(mini->input.words);
+	//print_stuff(mini->input.words);
 }

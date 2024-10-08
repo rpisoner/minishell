@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/08 12:28:36 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:44:41 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,3 +137,4 @@ void	do_cd(t_mini *mini, int i)
 	free(new_dir);
 	free(target);
 	return ;
+}
