@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/08 13:01:23 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:28:42 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ typedef struct s_mini
 	int			unclosed_quote;
 	int			cmd_num;
 	int			quoted;
+	int			stdin;
+	int			last_in;
+	int			stdout;
+	int			last_out;
 	char		t_quote;
 	int			status;
 	int			last_child;
@@ -91,8 +95,8 @@ char	**modify_shlvl(char **envp);
 char	**insert_into_env(char **envp, char *insert);
 
 //BUILT INS
-int		is_built_in(t_mini *mini);
-void	execute_built_ins(t_mini *mini);
+int		is_built_in(char **str);
+void	do_built_ins(t_mini *mini, char **str);
 void	get_env(t_mini *mini);
 void	do_pwd(t_mini *mini);
 void	do_exit(t_mini *mini);
@@ -102,7 +106,7 @@ void	do_echo(t_mini *mini, int i);
 void	do_export(t_mini *mini, int i);
 
 //BUILT-INS UTILS
-int	search_on_env(char **envp, char *var);
+int		search_on_env(char **envp, char *var);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);
@@ -137,6 +141,7 @@ void	manage_redir(t_mini *mini, int i);
 void	manage_single_redir(t_mini *mini);
 void	manage_pipe_out(t_mini *mini, int i, int j);
 void	manage_pipe_in(t_mini *mini, int i, int j);
+void	copy_std_io(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_word_size.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 14:31:53 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/02 17:37:23 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:23:19 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@ int	next_word_size(t_mini *mini, int i)
 				|| mini->input.raw_info[aux] == '>'
 				|| mini->input.raw_info[aux] == '<'))
 		{
-			// write_word(mini->input.raw_info, i, aux - i);
-			// printf("1.LEN: [%ld]\n", (mini->input.raw_info + aux) - ((mini->input.raw_info + i)));
 			return ((mini->input.raw_info + aux)
 				- ((mini->input.raw_info + i)));
 		}
 		aux++;
 	}
-	// write_word(mini->input.raw_info, i, aux - i);
-	// printf("3.LEN: [%ld]\n", (mini->input.raw_info + aux) - ((mini->input.raw_info + i)));
 	return ((mini->input.raw_info + aux) - ((mini->input.raw_info + i)));
 }

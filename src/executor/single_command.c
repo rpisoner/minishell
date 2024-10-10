@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   single_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/02 23:41:10 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:30:40 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,23 @@ void	execute_one_cmd(t_mini *mini)
 	exec_error();
 }
 
+void	execute_built_ins(t_mini *mini)
+{
+	manage_single_redir(mini);
+	mini->last_in = dup2(mini->input.infile, STDIN_FILENO);
+	mini->last_out = dup2(mini->input.outfile, STDOUT_FILENO);
+	do_built_ins(mini, mini->input.words);
+	dup2(mini->stdin, mini->last_in);
+	dup2(mini->stdout, mini->last_out);
+}
+
 void	execute_commands(t_mini *mini)
 {
 	if (mini->cmd_num == 1)
 	{
-		if (is_built_in(mini) == 0)
+		if (is_built_in(mini->input.words) == 0)
 			one_cmd(mini);
-		else if (is_built_in(mini) == 1)
+		else if (is_built_in(mini->input.words) == 1)
 			execute_built_ins(mini);
 	}
 	else if (mini->cmd_num > 1)

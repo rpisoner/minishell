@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/08 12:44:41 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:35:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	update_env(t_mini *mini, char *old_pwd, char *new_pwd)
 	i = search_on_env(mini->envp, "OLDPWD");
 	if (i == -1)
 	{
-		mini->envp = insert_into_env(mini->envp, ft_strjoin("OLDPWD=", old_pwd));
+		mini->envp = insert_into_env(mini->envp,
+				ft_strjoin("OLDPWD=", old_pwd));
 		if (!mini->envp)
 			malloc_error();
 	}
@@ -60,8 +61,9 @@ char	*get_target(t_mini *mini, int i)
 {
 	int		j;
 	char	*path;
-	
-	if (mini->input.words[i + 1] && ft_strcmp(mini->input.words[i + 1], "~") != 0)
+
+	if (mini->input.words[i + 1] && \
+		ft_strcmp(mini->input.words[i + 1], "~") != 0)
 	{
 		if (ft_strcmp(mini->input.words[i + 1], "-") == 0)
 			return (get_prev_path(mini));
@@ -91,10 +93,11 @@ char	*check_current_dir(t_mini *mini)
 		i = search_on_env(mini->envp, "HOME");
 		if (i >= 0)
 		{
-			old_dir = ft_strdup((&mini->envp[i][5]));	
+			old_dir = ft_strdup((&mini->envp[i][5]));
 			if (chdir(old_dir) < 0)
 			{
-				printf("Minishell: cd %s: no such file or directory\n", old_dir);
+				printf("Minishell: cd %s: \
+					no such file or directory\n", old_dir);
 				free(old_dir);
 				return (NULL);
 			}
@@ -117,24 +120,16 @@ void	do_cd(t_mini *mini, int i)
 		return ;
 	target = get_target(mini, i);
 	if (!target)
-	{
-		free(old_dir);
-		return ;
-	}
+		return (free(old_dir));
 	if (chdir(target) < 0)
 	{
 		printf("Minishell: cd %s: no such file or directory\n", target);
 		mini->status = 1;
-		free(target);
-		free (old_dir);
-		return ;
+		return (free(target), free(old_dir));
 	}
 	mini->status = 0;
 	new_dir = getcwd(NULL, 0);
 	if (ft_strcmp(old_dir, new_dir) != 0)
 		update_env(mini, old_dir, new_dir);
-	free(old_dir);
-	free(new_dir);
-	free(target);
-	return ;
+	return (free(old_dir), free(new_dir), free(target));
 }

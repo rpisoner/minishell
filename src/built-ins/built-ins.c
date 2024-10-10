@@ -6,57 +6,57 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:59:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/07 14:29:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:27:58 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	is_built_in(t_mini *mini)
+int	is_built_in(char **str)
 {
 	int	i;
 
 	i = -1;
-	while (mini->input.words[++i])
+	while (str[++i])
 	{
-		if (ft_strcmp(mini->input.words[i], "env") == 0)
+		if (ft_strcmp(str[i], "env") == 0)
 			return (1);
-		else if (ft_strcmp(mini->input.words[i], "pwd") == 0)
+		else if (ft_strcmp(str[i], "pwd") == 0)
 			return (1);
-		else if (ft_strcmp(mini->input.words[i], "cd") == 0)
+		else if (ft_strcmp(str[i], "cd") == 0)
 			return (1);
-		else if (ft_strcmp(mini->input.words[i], "exit") == 0)
+		else if (ft_strcmp(str[i], "exit") == 0)
 			return (1);
-		else if (ft_strcmp(mini->input.words[i], "export") == 0)
+		else if (ft_strcmp(str[i], "export") == 0)
 			return (1);
-		else if (ft_strcmp(mini->input.words[i], "unset") == 0)
+		else if (ft_strcmp(str[i], "unset") == 0)
 			return (1);
-		else if (ft_strcmp(mini->input.words[i], "echo") == 0)
+		else if (ft_strcmp(str[i], "echo") == 0)
 			return (1);
 	}
 	return (0);
 }
 
-void	execute_built_ins(t_mini *mini)
+void	do_built_ins(t_mini *mini, char **str)
 {
 	int	i;
 
 	i = -1;
-	while (mini->input.words[++i])
+	while (str[++i])
 	{
-		if (ft_strcmp(mini->input.words[i], "env") == 0)
+		if (ft_strcmp(str[i], "env") == 0)
 			get_env(mini);
-		else if (ft_strcmp(mini->input.words[i], "pwd") == 0)
+		else if (ft_strcmp(str[i], "pwd") == 0)
 			do_pwd(mini);
-		else if (ft_strcmp(mini->input.words[i], "cd") == 0)
+		else if (ft_strcmp(str[i], "cd") == 0)
 			do_cd(mini, i);
-		else if (ft_strcmp(mini->input.words[i], "exit") == 0)
+		else if (ft_strcmp(str[i], "exit") == 0)
 			do_exit(mini);
-		else if (ft_strcmp(mini->input.words[i], "export") == 0)
+		else if (ft_strcmp(str[i], "export") == 0)
 			do_export(mini, i);
-		else if (ft_strcmp(mini->input.words[i], "unset") == 0)
+		else if (ft_strcmp(str[i], "unset") == 0)
 			do_unset(mini);
-		else if (ft_strcmp(mini->input.words[i], "echo") == 0)
+		else if (ft_strcmp(str[i], "echo") == 0)
 			do_echo(mini, i);
 	}
 }

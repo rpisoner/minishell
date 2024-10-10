@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:15:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:54:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:27:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,10 @@ void	manage_pipe_out(t_mini *mini, int i, int j)
 		mini->parsed[i]->cmd[j] = NULL;
 		mini->parsed[i]->cmd[j + 1] = NULL;
 	}
+}
+
+void	copy_std_io(t_mini *mini)
+{
+	mini->stdin = dup(STDIN_FILENO);
+	mini->stdout = dup(STDOUT_FILENO);
 }

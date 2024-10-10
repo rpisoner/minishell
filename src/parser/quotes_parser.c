@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:59:08 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/08 15:59:43 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:49:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	quote_parsing(t_mini *mini, int i)
 	int		j;
 	int		n;
 
-	j = 0;
+	j = -1;
 	n = 0;
 	word = (char *)malloc(ft_strlen(mini->input.words[i])
 			- count_quotes(mini->input.words[i]) + 1);
-	while (mini->input.words[i][j])
+	while (mini->input.words[i][++j])
 	{
 		if (mini->input.words[i][j] == '\'' || mini->input.words[i][j] == '\"')
 		{
@@ -58,7 +58,6 @@ static void	quote_parsing(t_mini *mini, int i)
 		}
 		else
 			word[n++] = mini->input.words[i][j];
-		j++;
 	}
 	mini->t_quote = '\0';
 	word[n] = '\0';
@@ -82,5 +81,5 @@ void	parse_quotes(t_mini *mini)
 			quote_parsing(mini, i);
 		i++;
 	}
-	print_stuff(mini->input.words);
+	// print_stuff(mini->input.words);
 }
