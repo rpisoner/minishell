@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 12:15:26 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:38:00 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ typedef struct s_mini
 	int			cmd_num;
 	int			quoted;
 	int			redir;
-	int			stdin;
+	int			my_stdin;
 	int			last_in;
-	int			stdout;
+	int			my_stdout;
 	int			last_out;
 	char		t_quote;
 	int			status;

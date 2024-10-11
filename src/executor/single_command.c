@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 11:53:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:39:36 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	execute_built_ins(t_mini *mini)
 	mini->last_in = dup2(mini->input.infile, STDIN_FILENO);
 	mini->last_out = dup2(mini->input.outfile, STDOUT_FILENO);
 	do_built_ins(mini, mini->input.words);
-	dup2(mini->stdin, mini->last_in);
-	dup2(mini->stdout, mini->last_out);
+	dup2(mini->my_stdin, mini->last_in);
+	dup2(mini->my_stdout, mini->last_out);
 }
 
 void	execute_commands(t_mini *mini)
