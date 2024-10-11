@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 11:01:16 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:15:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_mini
 	int			unclosed_quote;
 	int			cmd_num;
 	int			quoted;
+	int			redir;
 	int			stdin;
 	int			last_in;
 	int			stdout;
@@ -107,6 +108,7 @@ void	do_export(t_mini *mini, char **str, int i);
 
 //BUILT-INS UTILS
 int		search_on_env(char **envp, char *var);
+int		search_env_var(t_mini *mini, char *var);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);

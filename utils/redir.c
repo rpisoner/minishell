@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:55:02 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:47:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	manage_single_redir(t_mini *mini)
 	i = -1;
 	mini->input.infile = -1;
 	mini->input.outfile = -1;
+	mini->redir = 1;
 	while (mini->input.words[++i])
 	{
 		manage_in_redir(mini, i);
