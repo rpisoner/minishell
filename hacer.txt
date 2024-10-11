@@ -1,3 +1,0 @@
-Cosas que hacer(Subject):
-
-Las señales (Ctrl-D, Ctrl-C y Ctrl-\) (Hacer al final) (Ctrl-C imprime nueva línea no termina la ejecución)
