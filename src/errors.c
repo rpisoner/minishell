@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/07 15:36:26 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 22:35:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	malloc_error(void)
 	exit (1);
 }
 
-void	exec_error(void)
+void	exec_error(t_mini *mini)
 {
 	perror("Error");
+	check_here_doc(mini);
 	exit(127);
 }
 

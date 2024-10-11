@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   counter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 12:20:29 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/03 11:24:27 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 22:13:32 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	split_counter(t_mini *mini)
 	int	splits;
 
 	splits = count_memory(mini);
-	//printf("Total splits: [%d]\n", splits);
 	return (splits);
 }
 

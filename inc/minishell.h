@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 21:33:08 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 22:36:28 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,9 @@ void	manage_redir(t_mini *mini, int i);
 void	manage_single_redir(t_mini *mini);
 int		check_infile(int infile);
 int		check_outfile(int outfile);
+void	check_first_redir(t_mini *mini);
+void	check_mid_redir(t_mini *mini, int i);
+void	check_last_redir(t_mini *mini, int i);
 void	manage_pipe_out(t_mini *mini, int i, int *j);
 void	manage_pipe_in(t_mini *mini, int i, int j);
 void	copy_std_io(t_mini *mini);
@@ -179,7 +182,7 @@ void	checkers(t_mini *mini, int *i, int *j, int *k);
 //SIGNALS
 void	signals(void);
 //ERRRORS
-void	exec_error(void);
+void	exec_error(t_mini *mini);
 void	unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
 void	pipe_error(void);

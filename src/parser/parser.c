@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 12:45:14 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/09 12:49:22 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 22:03:24 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,4 @@ void	parse_commands(t_mini *mini)
 		i++;
 	}
 	last_word(mini, i, j, k);
-	// print_parsed_cmd(mini);
 }
