@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:18:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 11:26:39 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:45:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ void	first_command(t_mini *mini)
 	if (is_built_in(mini->parsed[0]->cmd) == 0)
 	{
 		if (get_values(mini, 0) == 1)
-		{
-			printf("1\n");
 			exec_error();
-		}
 	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[0]->cmd) == 1)

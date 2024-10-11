@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 14:38:00 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:50:08 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +137,11 @@ void	parse_quotes(t_mini *mini);
 void	check_here_doc(t_mini *mini);
 void	reassign_words(char **str);
 void	emulate_here_doc(t_mini *mini, char *limiter);
-void	manage_in_redir(t_mini *mini, int i);
-void	manage_out_redir(t_mini *mini, int i);
+void	manage_in_redir(t_mini *mini, int *i);
+void	manage_out_redir(t_mini *mini, int *i);
 void	manage_redir(t_mini *mini, int i);
 void	manage_single_redir(t_mini *mini);
-void	manage_pipe_out(t_mini *mini, int i, int j);
+void	manage_pipe_out(t_mini *mini, int i, int *j);
 void	manage_pipe_in(t_mini *mini, int i, int j);
 void	copy_std_io(t_mini *mini);
 

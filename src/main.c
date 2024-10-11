@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/10 18:06:49 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:45:04 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char **argv, char **envp)
 			{
 				free(input);
 				clear_history();
+				printf("exit\n");
 				exit(0);
 			}
 			if (check_valid_input(input) == 1)

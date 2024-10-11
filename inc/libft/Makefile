@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 00:30:06 by jolivare          #+#    #+#              #
-#    Updated: 2024/08/21 12:46:37 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/11 15:35:57 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ BONUSS =		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 
 BONUS_OBJS = $(BONUSS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 REMOVE = rm -f
 CC = cc
 
