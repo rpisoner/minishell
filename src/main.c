@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 17:45:04 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 21:49:55 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	main(int argc, char **argv, char **envp)
 			if (mini.cmd_num > 1)
 				parse_commands(&mini);
 			execute_commands(&mini);
+			check_here_doc(&mini);
 			free (input);
 			free_stuff(&mini);
 		}
