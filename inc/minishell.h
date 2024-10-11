@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/10 14:28:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:01:16 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ int		is_built_in(char **str);
 void	do_built_ins(t_mini *mini, char **str);
 void	get_env(t_mini *mini);
 void	do_pwd(t_mini *mini);
-void	do_exit(t_mini *mini);
-void	do_unset(t_mini *mini);
-void	do_cd(t_mini *mini, int i);
-void	do_echo(t_mini *mini, int i);
-void	do_export(t_mini *mini, int i);
+void	do_exit(t_mini *mini, char **str);
+void	do_unset(t_mini *mini, char **str);
+void	do_cd(t_mini *mini, char **str, int i);
+void	do_echo(t_mini *mini, char	**str, int i);
+void	do_export(t_mini *mini, char **str, int i);
 
 //BUILT-INS UTILS
 int		search_on_env(char **envp, char *var);

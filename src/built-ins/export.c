@@ -6,13 +6,13 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:37 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/09 11:43:42 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:00:38 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	do_export(t_mini *mini, int i)
+void	do_export(t_mini *mini, char **str, int i)
 {
 	int		len;
 	char	**new_env;
@@ -25,7 +25,7 @@ void	do_export(t_mini *mini, int i)
 	j = -1;
 	while (mini->envp[++j])
 		new_env[j] = ft_strdup(mini->envp[j]);
-	new_env[len] = ft_strdup(mini->input.words[i + 1]);
+	new_env[len] = ft_strdup(str[i + 1]);
 	new_env[len + 1] = NULL;
 	j = -1;
 	while (mini->envp[++j])

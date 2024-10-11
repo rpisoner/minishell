@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:18:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/10 17:24:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:26:39 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,22 @@ void	first_command(t_mini *mini)
 		close(mini->old_pipe[READ]);
 		close(mini->old_pipe[WRITE]);
 	}
-	if (is_built_in(mini->parsed[0]->cmd) == 1)
+	if (is_built_in(mini->parsed[0]->cmd) == 0)
 	{
 		if (get_values(mini, 0) == 1)
+		{
+			printf("1\n");
 			exec_error();
+		}
 	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[0]->cmd) == 1)
+	{
 		do_built_ins(mini, mini->parsed[0]->cmd);
+		dup2(mini->old_pipe[WRITE], STDOUT_FILENO);
+		close(mini->old_pipe[READ]);
+		close(mini->old_pipe[WRITE]);
+	}
 	else
 	{
 		execve(mini->cmd_path, mini->parsed[0]->cmd, mini->envp);
@@ -74,8 +82,11 @@ void	first_command(t_mini *mini)
 void	mid_commands(t_mini *mini, int i)
 {
 	check_mid_redir(mini, i);
-	if (get_values(mini, i) == 1)
-		exec_error();
+	if (is_built_in(mini->parsed[i]->cmd) == 0)
+	{
+		if (get_values(mini, i) == 1)
+			exec_error();
+	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[i]->cmd) == 1)
 		do_built_ins(mini, mini->parsed[i]->cmd);
@@ -105,8 +116,11 @@ void	last_command(t_mini *mini, int i)
 		close(mini->parsed[i]->outfile);
 	}
 	close(mini->old_pipe[WRITE]);
-	if (get_values(mini, i) == 1)
-		exec_error();
+	if (is_built_in(mini->parsed[i]->cmd) == 0)
+	{
+		if (get_values(mini, i) == 1)
+			exec_error();
+	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[i]->cmd) == 1)
 		do_built_ins(mini, mini->parsed[i]->cmd);

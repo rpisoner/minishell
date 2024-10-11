@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:48 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 17:53:55 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:49:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ void	rearrange_env(t_mini *mini, char *var)
 	}
 }
 
-void	do_unset(t_mini *mini)
+void	do_unset(t_mini *mini, char **str)
 {
 	int	i;
 
 	i = 0;
-	while (mini->input.words[i])
+	while (str[i])
 	{
-		if (ft_strcmp(mini->input.words[i], "unset") == 0)
-			rearrange_env(mini, mini->input.words[i + 1]);
+		if (ft_strcmp(str[i], "unset") == 0)
+			rearrange_env(mini, str[i + 1]);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 11:59:20 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/10 14:27:58 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:04:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	do_built_ins(t_mini *mini, char **str)
 		else if (ft_strcmp(str[i], "pwd") == 0)
 			do_pwd(mini);
 		else if (ft_strcmp(str[i], "cd") == 0)
-			do_cd(mini, i);
+			do_cd(mini, str, i);
 		else if (ft_strcmp(str[i], "exit") == 0)
-			do_exit(mini);
+			do_exit(mini, str);
 		else if (ft_strcmp(str[i], "export") == 0)
-			do_export(mini, i);
+			do_export(mini, str, i);
 		else if (ft_strcmp(str[i], "unset") == 0)
-			do_unset(mini);
+			do_unset(mini, str);
 		else if (ft_strcmp(str[i], "echo") == 0)
-			do_echo(mini, i);
+			do_echo(mini, str, i);
 	}
 }

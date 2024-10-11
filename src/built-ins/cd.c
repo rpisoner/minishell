@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:32 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/09 11:35:11 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:57:54 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,16 @@ void	update_env(t_mini *mini, char *old_pwd, char *new_pwd)
 		return ;
 }
 
-char	*get_target(t_mini *mini, int i)
+char	*get_target(t_mini *mini, char **str, int i)
 {
 	int		j;
 	char	*path;
 
-	if (mini->input.words[i + 1] && \
-		ft_strcmp(mini->input.words[i + 1], "~") != 0)
+	if (str[i + 1] && ft_strcmp(str[i + 1], "~") != 0)
 	{
-		if (ft_strcmp(mini->input.words[i + 1], "-") == 0)
+		if (ft_strcmp(str[i + 1], "-") == 0)
 			return (get_prev_path(mini));
-		path = ft_strdup(mini->input.words[i + 1]);
+		path = ft_strdup(str[i + 1]);
 		if (!path)
 			malloc_error();
 		return (path);
@@ -109,7 +108,7 @@ char	*check_current_dir(t_mini *mini)
 	return (old_dir);
 }
 
-void	do_cd(t_mini *mini, int i)
+void	do_cd(t_mini *mini, char **str, int i)
 {
 	char	*target;
 	char	*new_dir;
@@ -118,7 +117,7 @@ void	do_cd(t_mini *mini, int i)
 	old_dir = check_current_dir(mini);
 	if (!old_dir)
 		return ;
-	target = get_target(mini, i);
+	target = get_target(mini, str, i);
 	if (!target)
 		return (free(old_dir));
 	if (chdir(target) < 0)

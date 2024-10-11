@@ -6,33 +6,33 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:09 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 14:26:49 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:04:47 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	check_command_num(t_mini *mini)
+int	check_command_num(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (mini->input.words[i])
+	while (str[i])
 		i++;
 	return (i);
 }
 
-int	check_numeric_arg(t_mini *mini)
+int	check_numeric_arg(t_mini *mini, char **str)
 {
 	int	i;
 
 	i = 0;
-	while (mini->input.words[1][i])
+	while (str[1][i])
 	{
-		if (ft_isdigit(mini->input.words[1][i]) == 0)
+		if (ft_isdigit(str[1][i]) == 0)
 		{
 			printf("minishell: exit: %s: a numeric argument is required",
-				mini->input.words[1]);
+				str[1]);
 			mini->status = 2;
 			return (1);
 		}
@@ -41,21 +41,21 @@ int	check_numeric_arg(t_mini *mini)
 	return (0);
 }
 
-void	do_exit(t_mini *mini)
+void	do_exit(t_mini *mini, char **str)
 {
 	printf("exit\n");
 	mini->status = 0;
-	if (check_command_num(mini) > 2)
+	if (check_command_num(str) > 2)
 	{
 		mini->status = 0;
 		printf("minishell: exit: too many arguments\n");
 		return ;
 	}
-	else if (mini->input.words[1])
+	else if (str[1])
 	{
-		if (check_numeric_arg(mini) == 1)
+		if (check_numeric_arg(mini, str) == 1)
 			exit (2);
-		mini->status = ft_atoi(mini->input.words[1]);
+		mini->status = ft_atoi(str[1]);
 	}
 	exit (mini->status);
 }

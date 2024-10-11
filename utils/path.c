@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:34:12 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:55:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/11 11:27:35 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	get_values(t_mini *mini, int index)
 	char	**paths;
 
 	i = 0;
-	if (ft_strchr(mini->parsed[i]->cmd[0], '/') != NULL)
+	if (ft_strchr(mini->parsed[index]->cmd[0], '/') != NULL)
 	{
-		mini->cmd_path = mini->parsed[i]->cmd[0];
+		mini->cmd_path = mini->parsed[index]->cmd[0];
 		return (0);
 	}
 	paths = get_path(mini);
