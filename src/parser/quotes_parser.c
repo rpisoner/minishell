@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:59:08 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/11 22:13:05 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:07:09 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,21 @@ static int	count_quotes(char *input)
 	return (counter * 2);
 }
 
+static void	init_stuff(t_mini *mini, char **word, int *j, int i)
+{
+	*j = -1;
+	*word = (char *)malloc(ft_strlen(mini->input.words[i])
+			- count_quotes(mini->input.words[i]) + 1);
+}
+
 static void	quote_parsing(t_mini *mini, int i)
 {
 	char	*word;
 	int		j;
 	int		n;
 
-	j = -1;
 	n = 0;
-	word = (char *)malloc(ft_strlen(mini->input.words[i])
-			- count_quotes(mini->input.words[i]) + 1);
+	init_stuff(mini, &word, &j, i);
 	while (mini->input.words[i][++j])
 	{
 		if (mini->input.words[i][j] == '\'' || mini->input.words[i][j] == '\"')

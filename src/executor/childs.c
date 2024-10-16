@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   childs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:18:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 22:36:06 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:03:55 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	first_command(t_mini *mini)
 	if (is_built_in(mini->parsed[0]->cmd) == 0)
 	{
 		if (get_values(mini, 0) == 1)
-			exec_error(mini);;
+			exec_error(mini);
 	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[0]->cmd) == 1)
@@ -31,7 +31,7 @@ void	first_command(t_mini *mini)
 	else
 	{
 		execve(mini->cmd_path, mini->parsed[0]->cmd, mini->envp);
-		exec_error(mini);;
+		exec_error(mini);
 	}
 	exit (mini->status);
 }
@@ -42,7 +42,7 @@ void	mid_commands(t_mini *mini, int i)
 	if (is_built_in(mini->parsed[i]->cmd) == 0)
 	{
 		if (get_values(mini, i) == 1)
-			exec_error(mini);;
+			exec_error(mini);
 	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[i]->cmd) == 1)
@@ -50,7 +50,7 @@ void	mid_commands(t_mini *mini, int i)
 	else
 	{
 		execve(mini->cmd_path, mini->parsed[i]->cmd, mini->envp);
-		exec_error(mini);;
+		exec_error(mini);
 	}
 	exit (mini->status);
 }
@@ -61,7 +61,7 @@ void	last_command(t_mini *mini, int i)
 	if (is_built_in(mini->parsed[i]->cmd) == 0)
 	{
 		if (get_values(mini, i) == 1)
-			exec_error(mini);;
+			exec_error(mini);
 	}
 	check_here_doc(mini);
 	if (is_built_in(mini->parsed[i]->cmd) == 1)
@@ -69,7 +69,7 @@ void	last_command(t_mini *mini, int i)
 	else
 	{
 		execve(mini->cmd_path, mini->parsed[i]->cmd, mini->envp);
-		exec_error(mini);;
+		exec_error(mini);
 	}
 	exit (mini->status);
 }

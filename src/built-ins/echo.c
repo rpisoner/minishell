@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:46:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/16 11:00:45 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:10:57 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	manage_line_flag(t_mini *mini, char **str, int *i)
 		return (1);
 	else if (manage_echo_new_line(mini, str, *i) == 3)
 		(*i)++;
-	else if(manage_echo_new_line(mini, str, *i) == 4)
+	else if (manage_echo_new_line(mini, str, *i) == 4)
 		return (2);
 	return (0);
 }
@@ -73,7 +73,8 @@ void	do_echo(t_mini *mini, char	**str, int i)
 {
 	while (mini->input.words[++i])
 	{
-		if (manage_line_flag(mini, str, &i) == 1 || manage_line_flag(mini, str, &i) == 2)
+		if (manage_line_flag(mini, str, &i) == 1
+			|| manage_line_flag(mini, str, &i) == 2)
 			return ;
 		if (manage_echo_status(mini, str, i) == 1)
 		{
