@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 21:57:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:29:38 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ int	main(int argc, char **argv, char **envp)
 			mini.input.raw_info = input;
 			initialize_input(&mini);
 			lexer(&mini);
+			if (mini.unclosed_quote == 1)
+			{
+				mini.unclosed_quote = 0;
+				continue ;
+			}
 			parse_quotes(&mini);
 			if (mini.unclosed_quote)
 			{

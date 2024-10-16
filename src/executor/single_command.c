@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 22:36:06 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/16 10:44:01 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	execute_one_cmd(t_mini *mini)
 
 void	execute_built_ins(t_mini *mini)
 {
-	manage_single_redir(mini);
+	manage_single_redir(mini);	
 	mini->last_in = dup2(mini->input.infile, STDIN_FILENO);
 	mini->last_out = dup2(mini->input.outfile, STDOUT_FILENO);
 	do_built_ins(mini, mini->input.words);

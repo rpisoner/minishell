@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:37 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 12:20:17 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/16 10:08:39 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_existing(t_mini *mini, char *str)
 	int		i;
 	char	*aux;
 
-	i = -1;
+	i = 0;
 	(void)mini;
 	while (str[i] != '=')
 		i++;
@@ -58,5 +58,6 @@ void	do_export(t_mini *mini, char **str, int i)
 	j = -1;
 	while (new_env[++j])
 		mini->envp[j] = ft_strdup(new_env[j]);
+	mini->envp[j] = NULL;
 	free_strs(new_env);
 }

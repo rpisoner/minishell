@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/10/11 22:29:49 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/16 10:45:33 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,13 @@ NAME = minishell
 # Sources & objects
 #########################################################################################
 
-SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/ft_strjoin_char.c \
-		src/parser/lexer.c utils/path.c src/executor/single_command.c utils/get_next_line_bonus.c\
+SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/get_next_line.c \
+		src/parser/lexer.c utils/path.c src/executor/single_command.c \
 		src/initialize.c src/errors.c src/parser/expander_utils.c src/parser/checkers.c src/signals.c \
 		utils/free_stuff.c utils/dev_utils.c src/parser/parser.c utils/redir.c src/single_path.c \
-		utils/flag_utils.c  utils/redir_utils.c src/executor/childs.c src/executor/forks.c src/executor/multiple_commands.c \
-		src/built-ins/pwd.c  src/built-ins/built-ins.c utils/get_env_utils.c src/built-ins/exit.c  src/built-ins/unset.c \
-		src/parser/redirection_utils.c src/parser/counter_utils.c  src/parser/counter.c  utils/next_word_size.c \
+		utils/flag_utils.c utils/redir_utils.c src/executor/childs.c src/executor/forks.c src/executor/multiple_commands.c \
+		src/built-ins/pwd.c src/built-ins/built-ins.c utils/get_env_utils.c src/built-ins/exit.c src/built-ins/unset.c \
+		src/parser/redirection_utils.c src/parser/counter_utils.c src/parser/counter.c utils/next_word_size.c \
 		src/built-ins/cd.c src/built-ins/echo.c src/built-ins/export.c src/parser/quotes_parser.c src/executor/childs_utils.c \
 
 OBJECTS = $(SOURCES:.c=.o)
@@ -84,6 +84,6 @@ r: all clean
 	@clear
 	@./$(NAME)
 
-v: all
+v: all clean
 	@clear
-	@valgrind --leak-check=full ./$(NAME)	
+	@valgrind --leak-check=full --track-fds=yes ./$(NAME)	

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 22:36:28 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/16 10:27:45 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 typedef struct s_input
 {
 	char	*raw_info;
+	char	*aux_input;
 	char	*current_word;
 	char	**words;
 	int		aux_fd;
@@ -117,7 +118,6 @@ int		next_word_size(t_mini *mini, int i);
 
 //EXTRA LIBFT UTILS 
 int		ft_isspace(char c);
-char	*ft_strjoin_char(char *s1, char c);
 
 //COUNTER FUNCIONS
 int		split_counter(t_mini *mini);
@@ -149,6 +149,7 @@ void	check_last_redir(t_mini *mini, int i);
 void	manage_pipe_out(t_mini *mini, int i, int *j);
 void	manage_pipe_in(t_mini *mini, int i, int j);
 void	copy_std_io(t_mini *mini);
+void	close_my_std(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);
@@ -183,7 +184,7 @@ void	checkers(t_mini *mini, int *i, int *j, int *k);
 void	signals(void);
 //ERRRORS
 void	exec_error(t_mini *mini);
-void	unclosed_quote_check(t_mini *mini);
+int		unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
 void	pipe_error(void);
 //FREE FUNCTIONS
