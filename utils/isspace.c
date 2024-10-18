@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:40:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:11:49 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:38:09 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int	ft_isspace(char c)
 
 void	close_fds(t_mini *mini)
 {
+	if (mini->input.infile != -1)
+		close(mini->input.infile + 1);
+	if (mini->input.outfile != -1)
+		close(mini->input.outfile + 1);
 	close(mini->my_stdin);
 	close(mini->my_stdout);
+	close(mini->last_in);
+	close(mini->last_out);
 }
