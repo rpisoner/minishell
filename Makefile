@@ -6,7 +6,7 @@
 #    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/10/16 10:45:33 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/18 16:40:37 by jolivare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,4 +86,4 @@ r: all clean
 
 v: all clean
 	@clear
-	@valgrind --leak-check=full --track-fds=yes ./$(NAME)	
+	@valgrind --leak-check=full --trace-children=yes --track-fds=all ./$(NAME)	

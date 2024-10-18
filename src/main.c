@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:31:55 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:56:37 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ int	main(int argc, char **argv, char **envp)
 				free(input);
 				clear_history();
 				printf("exit\n");
+				close(mini.my_stdin);
+				close(mini.my_stdout);
+				if (mini.input.infile != -1)
+					close (mini.input.infile);
+				if (mini.input.outfile != -1)
+					close (mini.input.outfile);
 				exit(0);
 			}
 			if (check_valid_input(input) == 1)
