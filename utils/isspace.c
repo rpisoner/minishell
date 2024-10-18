@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:40:52 by jolivare          #+#    #+#             */
-/*   Updated: 2024/09/30 12:56:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:11:49 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,10 @@ int	ft_isspace(char c)
 			|| c == '\v' || c == '\f' || c == '\r'))
 		return (1);
 	return (0);
+}
+
+void	close_fds(t_mini *mini)
+{
+	close(mini->my_stdin);
+	close(mini->my_stdout);
 }

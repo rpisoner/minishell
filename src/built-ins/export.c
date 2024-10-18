@@ -6,11 +6,60 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:37 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/16 10:08:39 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:10:39 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+void	print_ordered_env(char **aux_env)
+{
+	int	i;
+
+	i = -1;
+	while (aux_env[++i])
+		printf ("declare -x %s\n", aux_env[i]);	
+}
+
+static void	swap_content(char **aux_env, int pos1, int pos2)
+{
+	char	*aux_slot;
+	if (aux_env[pos2] && ft_strcmp(aux_env[pos1], aux_env[pos2]) > 0)
+	{
+		aux_slot = aux_env[pos1];
+		aux_env[pos1] = aux_env[pos2];
+		aux_env[pos2] = aux_slot;
+	}
+}
+
+void	print_alphabetically(t_mini *mini)
+{
+	int		i;
+	int		j;
+	int		size;
+	char	**aux_env;
+
+	size = 0;
+	while (mini->envp[size])
+		size++;
+	aux_env = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!aux_env)
+		malloc_error();
+	i = -1;
+	while (mini->envp[++i])
+		aux_env[i] = ft_strdup(mini->envp[i]);
+	aux_env[i] = NULL;
+	i = -1;
+	while (++i < size)
+	{
+		j = -1;
+		while (++j < size - 1)
+			swap_content(aux_env, j, j + 1);
+	}
+	i = -1;
+	print_ordered_env(aux_env);
+	free_strs(aux_env);
+}
 
 int	check_existing(t_mini *mini, char *str)
 {
@@ -19,6 +68,11 @@ int	check_existing(t_mini *mini, char *str)
 
 	i = 0;
 	(void)mini;
+	if (!str)
+	{
+		print_alphabetically(mini);
+		return (1);
+	}
 	while (str[i] != '=')
 		i++;
 	aux = ft_substr(str, 0, i);

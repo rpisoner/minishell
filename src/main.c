@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/14 15:29:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:13:59 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int argc, char **argv, char **envp)
 			if (mini.unclosed_quote)
 			{
 				mini.unclosed_quote = 0;
+				close_fds(&mini);
 				free (input);
 				free_stuff(&mini);
 				continue ;

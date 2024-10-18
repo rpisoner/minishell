@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 15:32:02 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/16 10:27:45 by jolivare         ###   ########.fr       */
+/*   Created: 2024/10/18 16:14:34 by jolivare          #+#    #+#             */
+/*   Updated: 2024/10/18 16:19:50 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	do_export(t_mini *mini, char **str, int i);
 //BUILT-INS UTILS
 int		search_on_env(char **envp, char *var);
 int		search_env_var(t_mini *mini, char *var);
+int		check_echo_next_pos(char **str, int i);
 
 //TOKENIZER FUNCTIONS
 void	lexer(t_mini *mini);
@@ -149,7 +150,7 @@ void	check_last_redir(t_mini *mini, int i);
 void	manage_pipe_out(t_mini *mini, int i, int *j);
 void	manage_pipe_in(t_mini *mini, int i, int j);
 void	copy_std_io(t_mini *mini);
-void	close_my_std(t_mini *mini);
+void	close_fds(t_mini *mini);
 
 //PATH FUNCTIONS
 char	**search_path(char **envp);

@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:48 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/16 10:08:13 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:11:26 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	do_unset(t_mini *mini, char **str)
 	int	i;
 
 	i = 0;
+	if (!str[i + 1])
+		return ;
 	while (str[i])
 	{
 		if (ft_strcmp(str[i], "unset") == 0)

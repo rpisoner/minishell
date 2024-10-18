@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:46:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/16 16:10:57 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:20:46 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	manage_echo_new_line(t_mini *mini, char	**str, int i)
 	int	j;
 
 	j = 0;
+	if (str[i][j] == '-' && str[i][j + 1] == '-')
+		return (0);
 	if (ft_strcmp(str[i], "-n") == 0)
 	{
 		mini->line = 1;
@@ -71,10 +73,12 @@ static int	manage_line_flag(t_mini *mini, char **str, int *i)
 
 void	do_echo(t_mini *mini, char	**str, int i)
 {
-	while (mini->input.words[++i])
+	if (check_echo_next_pos(str, i) == 1)
+		return ;
+	while (str[++i])
 	{
-		if (manage_line_flag(mini, str, &i) == 1
-			|| manage_line_flag(mini, str, &i) == 2)
+		if (manage_line_flag(mini, str, &i) == 1 || \
+			manage_line_flag(mini, str, &i) == 2)
 			return ;
 		if (manage_echo_status(mini, str, i) == 1)
 		{
