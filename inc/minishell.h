@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:14:34 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 18:13:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:57:02 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,8 @@ char	*get_next_line(int fd);
 
 //EXPAND UTILS FUNCTIONS
 void	annex_content(t_mini *mini, char *var_content, int *j);
+int		check_status(t_mini *mini, int i);
+int		valid_var_content(t_mini *mini, char *var_content);
 char	*var_name(t_mini *mini, int i);
 char	*search_var(t_mini *mini, char *var);
 

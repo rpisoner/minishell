@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:46:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:20:46 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:04:48 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-static int	manage_echo_status(t_mini *mini, char	**str, int i)
-{
-	if (mini->meta_char && ft_strcmp(str[i], "?") == 0)
-	{
-		if (str[i + 1] != NULL)
-			return (1);
-		else if (!str[i + 1])
-			return (2);
-	}
-	return (0);
-}
 
 static int	manage_echo_new_line(t_mini *mini, char	**str, int i)
 {
@@ -80,20 +68,11 @@ void	do_echo(t_mini *mini, char	**str, int i)
 		if (manage_line_flag(mini, str, &i) == 1 || \
 			manage_line_flag(mini, str, &i) == 2)
 			return ;
-		if (manage_echo_status(mini, str, i) == 1)
-		{
-			printf("%d ", mini->status);
-			i++;
-		}
-		else if (manage_echo_status(mini, str, i) == 2)
-		{
-			printf("%d\n", mini->status);
-			return ;
-		}
 		if (str[i + 1] == NULL)
 			break ;
 		printf("%s ", str[i]);
 	}
 	printf("%s", str[i]);
 	print_new_line(mini);
+	mini->status = 0;
 }

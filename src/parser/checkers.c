@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:24:25 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/19 12:44:38 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/19 17:57:37 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,20 @@ void	expander_check(t_mini *mini, int *i, int *j)
 			&& mini->t_quote == '\"'))
 	{
 		mini->meta_char = 1;
-		variable_name = var_name(mini, *(i));
-		var_content = search_var(mini, variable_name);
-		(*i) += ft_strlen(variable_name);
-		free(variable_name);
-		mini->ign_char = 1;
-		if (!var_content)
-			return ;
-		annex_content(mini, var_content, j);
+		if (check_status(mini, *i) == 0)
+		{
+			variable_name = var_name(mini, *(i));
+			var_content = search_var(mini, variable_name);
+			(*i) += ft_strlen(variable_name);
+			free(variable_name);
+		}
+		else
+		{
+			var_content = ft_itoa(mini->status);
+			(*i) += 1;
+		}
+		if (valid_var_content(mini, var_content))
+			annex_content(mini, var_content, j);
 	}
 }
 

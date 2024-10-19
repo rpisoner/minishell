@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+         #
+#    By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 12:19:53 by jolivare          #+#    #+#              #
-#    Updated: 2024/10/18 16:40:37 by jolivare         ###   ########.fr        #
+#    Updated: 2024/10/19 17:47:12 by rpisoner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SOURCES = src/main.c src/built-ins/getenv.c utils/isspace.c utils/get_next_line.
 		utils/free_stuff.c utils/dev_utils.c src/parser/parser.c utils/redir.c src/single_path.c \
 		utils/flag_utils.c utils/redir_utils.c src/executor/childs.c src/executor/forks.c src/executor/multiple_commands.c \
 		src/built-ins/pwd.c src/built-ins/built-ins.c utils/get_env_utils.c src/built-ins/exit.c src/built-ins/unset.c \
-		src/parser/redirection_utils.c src/parser/counter_utils.c src/parser/counter.c utils/next_word_size.c \
+		src/parser/redirection_utils.c src/parser/counter_utils.c src/parser/counter.c utils/next_word_size.c src/parser/expander_utils2.c\
 		src/built-ins/cd.c src/built-ins/echo.c src/built-ins/export.c src/parser/quotes_parser.c src/executor/childs_utils.c \
 
 OBJECTS = $(SOURCES:.c=.o)
