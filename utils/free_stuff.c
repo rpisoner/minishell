@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:36:11 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/08 11:26:57 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:14:47 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ void	free_input_words(t_mini *mini)
 {
 	int	i;
 
-	i = 0;
-	while (mini->input.words[i] != NULL)
-	{
+	i = -1;
+	while (mini->input.words[++i] != NULL)
 		free(mini->input.words[i]);
-		i++;
-	}
 	free(mini->input.words);
 }
 

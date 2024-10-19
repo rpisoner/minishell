@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/14 15:18:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:12:17 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,21 @@ void	pipe_error(void)
 {
 	printf("Pipe error\n");
 	exit(1);
+}
+
+void	check_readline_failure(char *input, t_mini *mini)
+{
+	if (!input)
+	{
+		free(input);
+		clear_history();
+		printf("exit\n");
+		close(mini->my_stdin);
+		close(mini->my_stdout);
+		if (mini->input.infile != -1)
+			close (mini->input.infile);
+		if (mini->input.outfile != -1)
+			close (mini->input.outfile);
+		exit(0);
+	}
 }

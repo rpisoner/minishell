@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:14:34 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:19:50 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:13:24 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ char	*get_next_line(int fd);
 void	annex_content(t_mini *mini, char *var_content, int *j);
 char	*var_name(t_mini *mini, int i);
 char	*search_var(t_mini *mini, char *var);
+
 //CHECKERS
 void	ign_char_setter(t_mini *mini);
 void	copy_redirs(t_mini *mini, char *token, int i);
@@ -181,13 +182,17 @@ void	expander_check(t_mini *mini, int *i, int *j);
 void	pipe_check(t_mini *mini, int *i, int *j, int *k);
 void	quote_check(t_mini *mini, int i);
 void	checkers(t_mini *mini, int *i, int *j, int *k);
+
 //SIGNALS
 void	signals(void);
+
 //ERRRORS
 void	exec_error(t_mini *mini);
 int		unclosed_quote_check(t_mini *mini);
 void	malloc_error(void);
 void	pipe_error(void);
+void	check_readline_failure(char *input, t_mini *mini);
+
 //FREE FUNCTIONS
 void	free_stuff(t_mini *mini);
 void	free_strs(char	**str);

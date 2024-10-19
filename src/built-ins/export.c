@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:37 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:10:39 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:05:42 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	print_ordered_env(char **aux_env)
 
 	i = -1;
 	while (aux_env[++i])
-		printf ("declare -x %s\n", aux_env[i]);	
+		printf("declare -x %s\n", aux_env[i]);
 }
 
 static void	swap_content(char **aux_env, int pos1, int pos2)
 {
 	char	*aux_slot;
+
 	if (aux_env[pos2] && ft_strcmp(aux_env[pos1], aux_env[pos2]) > 0)
 	{
 		aux_slot = aux_env[pos1];

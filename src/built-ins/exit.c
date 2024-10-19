@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:34:09 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:34:24 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/19 12:37:31 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	do_exit(t_mini *mini, char **str)
 			exit (2);
 		mini->status = ft_atoi(str[1]);
 	}
+	free_stuff(mini);
 	close_fds(mini);
 	exit (mini->status);
 }

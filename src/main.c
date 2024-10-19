@@ -6,7 +6,7 @@
 /*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:56:37 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:14:06 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,58 +27,47 @@ int	check_valid_input(char *str)
 	return (0);
 }
 
+static void	execute_mini(t_mini *mini, char *input)
+{
+	while (1)
+	{
+		input = readline("minishell>");
+		check_readline_failure(input, mini);
+		if (check_valid_input(input) == 1)
+			continue ;
+		mini->input.raw_info = input;
+		initialize_input(mini);
+		lexer(mini);
+		parse_quotes(mini);
+		if (mini->unclosed_quote)
+		{
+			mini->unclosed_quote = 0;
+			free (input);
+			free_stuff(mini);
+			continue ;
+		}
+		if (input && *input)
+			add_history(input);
+		if (mini->cmd_num > 1)
+			parse_commands(mini);
+		execute_commands(mini);
+		free (input);
+		free_stuff(mini);
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	char	*input;
 	t_mini	mini;
 
 	(void)argv;
+	input = NULL;
 	initialize_data(&mini, envp);
 	signals();
 	if (argc == 1)
 	{
-		while (1)
-		{
-			input = readline("minishell>");
-			if (!input)
-			{
-				free(input);
-				clear_history();
-				printf("exit\n");
-				close(mini.my_stdin);
-				close(mini.my_stdout);
-				if (mini.input.infile != -1)
-					close (mini.input.infile);
-				if (mini.input.outfile != -1)
-					close (mini.input.outfile);
-				exit(0);
-			}
-			if (check_valid_input(input) == 1)
-				continue ;
-			mini.input.raw_info = input;
-			initialize_input(&mini);
-			lexer(&mini);
-			if (mini.unclosed_quote == 1)
-			{
-				mini.unclosed_quote = 0;
-				continue ;
-			}
-			parse_quotes(&mini);
-			if (mini.unclosed_quote)
-			{
-				mini.unclosed_quote = 0;
-				free (input);
-				free_stuff(&mini);
-				continue ;
-			}
-			if (input && *input)
-				add_history(input);
-			if (mini.cmd_num > 1)
-				parse_commands(&mini);
-			execute_commands(&mini);
-			free (input);
-			free_stuff(&mini);
-		}
+		execute_mini(&mini, input);
 		clear_history();
 		return (0);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:59:08 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/16 16:07:09 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/19 12:41:56 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
