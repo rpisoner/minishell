@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:15:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/19 13:01:40 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:09:45 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	manage_in_redir(t_mini *mini, int *i)
 		mini->input.infile = open(mini->input.words[(*i) + 1], O_RDONLY);
 		if (check_infile(mini->input.infile) == 1)
 			return ;
-		reassign_words(mini->input.words);
+		reassign_words(mini->input.words, *i);
 	}
 	else if (ft_strcmp(mini->input.words[(*i)], "<<") == 0)
 	{
@@ -28,7 +28,7 @@ void	manage_in_redir(t_mini *mini, int *i)
 		mini->input.infile = open("here_doc", O_RDONLY);
 		if (check_infile(mini->input.infile) == 1)
 			return ;
-		reassign_words(mini->input.words);
+		reassign_words(mini->input.words, *i);
 	}
 }
 
@@ -65,7 +65,7 @@ void	manage_pipe_in(t_mini *mini, int i, int j)
 		mini->parsed[i]->infile = open(mini->parsed[i]->cmd[j + 1], O_RDONLY);
 		if (check_infile(mini->parsed[i]->infile) == 1)
 			return ;
-		reassign_words(mini->parsed[i]->cmd);
+		reassign_words(mini->parsed[i]->cmd, j);
 	}
 	else if (ft_strcmp(mini->parsed[i]->cmd[j], "<<") == 0)
 	{
@@ -74,7 +74,7 @@ void	manage_pipe_in(t_mini *mini, int i, int j)
 		mini->parsed[i]->infile = open("here_doc", O_RDONLY);
 		if (check_infile(mini->parsed[i]->infile) == 1)
 			return ;
-		reassign_words(mini->parsed[i]->cmd);
+		reassign_words(mini->parsed[i]->cmd, j);
 	}
 }
 

@@ -3,30 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/19 13:03:48 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:01:18 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void	reassign_words(char **str)
+void reassign_words(char **str, int i)
 {
-	int	i;
-	int	j;
+    int j;
 
-	i = 2;
-	j = 0;
-	while (str[i])
-	{
-		str[j] = str[i];
-		str[j + 1] = NULL;
-		i++;
-		j++;
-	}
+    j = i;
+    free(str[i]);
+    free(str[i + 1]);
+    while (str[j + 2] != NULL)
+    {
+        str[j] = str[j + 2];
+        j++;
+    }
+    str[j] = NULL;
+    str[j + 1] = NULL;
 }
+
 
 void	emulate_here_doc(t_mini *mini, char *limiter)
 {

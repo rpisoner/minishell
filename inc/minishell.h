@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:14:34 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/19 17:57:02 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:56:28 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	parse_quotes(t_mini *mini);
 
 // REDIR FUNCTIONS
 void	check_here_doc(t_mini *mini);
-void	reassign_words(char **str);
+void	reassign_words(char **str, int i);
 void	emulate_here_doc(t_mini *mini, char *limiter);
 void	manage_in_redir(t_mini *mini, int *i);
 void	manage_out_redir(t_mini *mini, int *i);

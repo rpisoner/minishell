@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:58:41 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/18 18:12:17 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:08:48 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	check_readline_failure(char *input, t_mini *mini)
 	{
 		free(input);
 		clear_history();
+		check_here_doc(mini);
 		printf("exit\n");
 		close(mini->my_stdin);
 		close(mini->my_stdout);
