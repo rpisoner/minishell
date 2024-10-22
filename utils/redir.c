@@ -6,28 +6,27 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 16:01:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:13:29 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-void reassign_words(char **str, int i)
+void	reassign_words(char **str, int i)
 {
-    int j;
+	int	j;
 
-    j = i;
-    free(str[i]);
-    free(str[i + 1]);
-    while (str[j + 2] != NULL)
-    {
-        str[j] = str[j + 2];
-        j++;
-    }
-    str[j] = NULL;
-    str[j + 1] = NULL;
+	j = i;
+	free(str[i]);
+	free(str[i + 1]);
+	while (str[j + 2] != NULL)
+	{
+		str[j] = str[j + 2];
+		j++;
+	}
+	str[j] = NULL;
+	str[j + 1] = NULL;
 }
-
 
 void	emulate_here_doc(t_mini *mini, char *limiter)
 {
@@ -36,7 +35,7 @@ void	emulate_here_doc(t_mini *mini, char *limiter)
 
 	mini->input.aux_fd = open("here_doc", O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (mini->input.aux_fd < 0)
-		exit (1);
+		exit(1);
 	complete_limiter = ft_strjoin(limiter, "\n");
 	while (1)
 	{
@@ -46,11 +45,11 @@ void	emulate_here_doc(t_mini *mini, char *limiter)
 		if (ft_strcmp(complete_limiter, text) == 0)
 			break ;
 		write(mini->input.aux_fd, text, ft_strlen(text));
-		free (text);
+		free(text);
 	}
 	if (text)
-		free (text);
-	close (mini->input.aux_fd);
+		free(text);
+	close(mini->input.aux_fd);
 	free(complete_limiter);
 }
 

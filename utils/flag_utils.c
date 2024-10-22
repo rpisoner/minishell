@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:45:24 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 16:21:34 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:12:12 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,14 @@ int	check_echo_next_pos(char **str, int i)
 		printf("\n");
 		return (1);
 	}
+	return (0);
+}
+
+int	check_previous_pos(char **str, int i)
+{
+	if (i != 0 && ft_strcmp(str[i - 1], "<<") == 0)
+		return (1);
+	else if ((i != 0 && ft_strcmp(str[i - 1], "<") == 0))
+		return (1);
 	return (0);
 }
