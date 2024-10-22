@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:14:34 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 17:09:25 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:03:12 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ void	checkers(t_mini *mini, int *i, int *j, int *k);
 
 //SIGNALS
 void	signals(void);
+void	signals_here_doc(void);
 
 //ERRRORS
 void	exec_error(t_mini *mini);

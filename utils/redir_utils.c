@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:15:41 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 16:36:18 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:27:25 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	manage_in_redir(t_mini *mini, int *i)
 		if (check_infile(mini->input.infile) == 1)
 			return ;
 		reassign_words(mini->input.words, *i);
-		print_stuff(mini->input.words);
 	}
 }
 

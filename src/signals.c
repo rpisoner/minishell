@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:57:19 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/10/11 11:31:48 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:03:23 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,17 @@ void	signals(void)
 {
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
+}
+
+static void	ctrl_sigint_here(int sig)
+{
+	(void)sig;
+	unlink("here_doc");
+	exit(1);
+}
+
+void	signals_here_doc(void)
+{
+	signal(SIGINT, ctrl_sigint_here);
+	unlink("here_doc");
 }

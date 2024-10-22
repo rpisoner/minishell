@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 00:41:22 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 17:16:44 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:48:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	one_cmd(t_mini *mini)
 	}
 	if (pid == 0)
 	{
+		signals_here_doc();
 		manage_single_redir(mini);
 		execute_one_cmd(mini);
 	}

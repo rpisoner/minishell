@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 10:32:26 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/18 17:27:44 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:48:11 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	first_fork(t_mini *mini)
 		exit (1);
 	if (first_child == 0)
 	{
+		signals_here_doc();
 		close(mini->my_stdin);
 		close(mini->my_stdout);
 		manage_redir(mini, 0);
@@ -46,6 +47,7 @@ static void	mid_forks(t_mini *mini)
 			exit (1);
 		if (middle_child == 0)
 		{
+			signals_here_doc();
 			close(mini->my_stdin);
 			close(mini->my_stdout);
 			manage_redir(mini, i);
@@ -67,6 +69,7 @@ static void	last_fork(t_mini *mini)
 		exit (1);
 	if (last_child == 0)
 	{
+		signals_here_doc();
 		close(mini->my_stdin);
 		close(mini->my_stdout);
 		manage_redir(mini, mini->cmd_num - 1);

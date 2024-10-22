@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:57:29 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 17:13:29 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:59:30 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	emulate_here_doc(t_mini *mini, char *limiter)
 	complete_limiter = ft_strjoin(limiter, "\n");
 	while (1)
 	{
+		write(1, ">", 1);
 		text = get_next_line(0);
 		if (text == NULL)
 			break ;
