@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 16:14:34 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 18:03:12 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:20:10 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_mini
 	int			meta_char;
 	int			unclosed_quote;
 	int			cmd_num;
+	int			is_status;
 	int			quoted;
 	int			my_stdin;
 	int			last_in;

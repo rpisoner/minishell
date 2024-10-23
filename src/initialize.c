@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolivare < jolivare@student.42mad.com>     +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:37:39 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/11 11:47:41 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:20:26 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	initialize_data(t_mini *mini, char **envp)
 	mini->status = 0;
 	mini->redir = 0;
 	mini->line = 0;
+	mini->is_status = 0;
 	mini->unclosed_quote = 0;
 	mini->here_doc = 0;
 	mini->meta_char = 0;

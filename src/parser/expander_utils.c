@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:29:28 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/19 17:10:23 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:21:05 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,19 @@ void	annex_content(t_mini *mini, char *var_content, int *j)
 		ft_strcpy(mini->input.current_word, var_content);
 		*j = ft_strlen(var_content);
 	}
-	free(var_content);
+	if (mini->is_status == 1)
+	{
+		mini->is_status = 0;
+		free(var_content);
+	}
 }
 
 int	check_status(t_mini *mini, int i)
 {
 	if (mini->input.raw_info[i + 1] == '?')
+	{
+		mini->is_status = 1;
 		return (1);
+	}
 	return (0);
 }
