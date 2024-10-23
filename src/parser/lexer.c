@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:26:36 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 16:09:59 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:43:27 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void	lexer(t_mini *mini)
 	store_word(mini, &j, &k);
 	mini->input.words[k] = NULL;
 	if (unclosed_quote_check(mini) == 1)
-		free_stuff(mini);
+		return ;
 }

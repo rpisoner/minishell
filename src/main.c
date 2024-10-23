@@ -6,7 +6,7 @@
 /*   By: jolivare <jolivare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:29:46 by jolivare          #+#    #+#             */
-/*   Updated: 2024/10/22 18:03:08 by jolivare         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:44:21 by jolivare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	execute_mini(t_mini *mini, char *input)
 		mini->input.raw_info = input;
 		initialize_input(mini);
 		lexer(mini);
-		parse_quotes(mini);
 		if (mini->unclosed_quote)
 		{
 			mini->unclosed_quote = 0;
@@ -46,6 +45,7 @@ static void	execute_mini(t_mini *mini, char *input)
 			free_stuff(mini);
 			continue ;
 		}
+		parse_quotes(mini);
 		if (input && *input)
 			add_history(input);
 		if (mini->cmd_num > 1)
