@@ -1,6 +1,6 @@
 # Minishell Project - My Project at 42
 
-Welcome to my **Minishell** project!
+Made in colaboration with [rpisoner](https://github.com/rpisoner)
 
 ## Summary
 The **Minishell** project involves creating a simple shell that replicates some core features of a Unix shell. The goal is to manage user input, execute commands, handle environment variables, and implement some built-in functions, providing an interactive prompt for users.
