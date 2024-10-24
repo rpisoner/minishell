@@ -9,7 +9,7 @@ The **Minishell** project involves creating a simple shell that replicates some 
 The shell needs to handle various features of a typical command-line interface, including:
 - **Prompt**: Displaying a prompt where the user can input commands.
 - **Command Execution**: Supporting simple commands and executing them via `execve`.
-- **Pipes and Redirections**: Managing multiple processes connected via pipes, as well as input/output redirections (`>`, `>>`, `<`, `<<`).
+- **Pipes and Redirections**: Managing multiple processes connected via pipes, as well as input/output redirections (`<`, `<<`, `>`, `>>`).
 - **Environment Variables**: Handling and updating environment variables, allowing for commands like `export` and `unset`.
 - **Built-ins**: Implementing built-in commands such as:
   - `cd`: Change directory.
