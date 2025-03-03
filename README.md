@@ -1,4 +1,4 @@
-# Minishell Project - My Project at 42
+# Minishell
 
 Made in colaboration with [rpisoner](https://github.com/rpisoner)
 
